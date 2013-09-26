@@ -1,0 +1,18 @@
+{
+  "author": "Todd Hooper",
+  "name": "javascript-seo",
+  "description": "Service to pre-render javascript rendered pages for SEO",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thoop/javascript-seo"
+  },
+  "dependencies": {
+    "phantomjs": "~1.9.2-0",
+    "phantom": "~0.5.2"
+  },
+  "engines": {
+    "node": "0.10.18",
+    "npm": "1.3.8"
+  }
+}
