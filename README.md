@@ -3,7 +3,7 @@ Prerender Service
 
 This is a node server that uses phantomjs to render a javascript-rendered page as HTML. It should be used in conjunction with [prerender_rails](https://github.com/collectiveip/prerender_rails) middleware to serve the rendered HTML to crawlers for SEO. It is also meant to be proxied through your server so that any relative links to things like CSS will work.
 
-It is currently deployed at `prerender.herokuapp.com`, or you can deploy your own.
+It is currently deployed at `http://prerender.herokuapp.com`, or you can deploy your own.
 
 ## Deploying your own
 
@@ -14,6 +14,8 @@ It is currently deployed at `prerender.herokuapp.com`, or you can deploy your ow
 
 ## How it works
 This is a simple service that only takes a url and returns the rendered HTML (with all script tags removed).
+
+Note: you should proxy the request through your server so that relative links to CSS still work (see [prerender_rails](https://github.com/collectiveip/prerender_rails) for an example)
 
 `GET` http://prerender.herokuapp.com/https://google.com
 
