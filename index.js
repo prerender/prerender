@@ -10,6 +10,7 @@ phantom.create(function(phantom) {
                 if ('fail' === status) { 
                     res.writeHead(404);
                     res.end();
+                    page.close();
                 } else {
                     setTimeout(function(){
                         page.evaluate(function () {
