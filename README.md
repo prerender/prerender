@@ -1,1 +1,1 @@
-javascript-seo
+prerender
