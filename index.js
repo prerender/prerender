@@ -27,6 +27,6 @@ phantom.create(function(phantom) {
                 };
             });
         });
-    }).listen(3000);
-    console.log('Server running on port 3000');
+    }).listen(process.env.PORT || 3000);
+    console.log('Server running on port ' + (process.env.PORT || 3000));
 });
