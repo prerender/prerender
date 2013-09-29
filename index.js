@@ -3,7 +3,6 @@ var phantom = require('phantom')
 
 phantom.create(function(phantom) {
     http.createServer(function (req, res) {
-        if(req.url == '/favicon.ico' || req.url == '/') return;
         console.log('getting', req.url);
         phantom.createPage(function(page) {
             page.open(req.url.substr(1), function (status) {
@@ -18,7 +17,7 @@ phantom.create(function(phantom) {
                         }, function(documentHTML) {
                             var matches = documentHTML.match(/<script(?:.*?)>(?:.*?)<\/script>/g);
 
-                            for( var i = 0; i < matches.length; i++) {
+                            for( var i = 0; matches && i < matches.length; i++) {
                                 documentHTML = documentHTML.replace(matches[i], '');
                             }
                             res.writeHead(200, {'Content-Type': 'text/html'});
