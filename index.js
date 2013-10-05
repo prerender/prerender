@@ -15,7 +15,7 @@ phantom.create(function(phantom) {
                         page.evaluate(function () {
                             return document && document.getElementsByTagName('html')[0].innerHTML
                         }, function(documentHTML) {
-                            var matches = documentHTML.match(/<script(?:.*?)>(?:.*?)<\/script>/g);
+                            var matches = documentHTML.match(/<script(?:.*?)>(?:[\S\s]*?)<\/script>/g);
 
                             for( var i = 0; matches && i < matches.length; i++) {
                                 documentHTML = documentHTML.replace(matches[i], '');
