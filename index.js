@@ -13,7 +13,7 @@ phantom.create(function(phantom) {
                 } else {
                     setTimeout(function(){
                         page.evaluate(function () {
-                            return document && document.getElementsByTagName('html')[0].innerHTML
+                            return document && document.getElementsByTagName('html')[0].outerHTML
                         }, function(documentHTML) {
                             var matches = documentHTML.match(/<script(?:.*?)>(?:[\S\s]*?)<\/script>/g);
 
