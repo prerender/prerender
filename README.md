@@ -13,6 +13,12 @@ It is currently deployed at `http://prerender.herokuapp.com`, or you can deploy 
 	$ heroku create
 	$ git push heroku master
 
+## Running locally
+Make sure you have a copy of the phantomjs binary to run locally.
+
+	$ brew update
+	$ brew install phantomjs
+
 
 ## How it works
 This is a simple service that only takes a url and returns the rendered HTML (with all script tags removed).
