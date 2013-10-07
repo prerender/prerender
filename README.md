@@ -30,7 +30,7 @@ For example, if you rendered the HTML of an angular page but left the angular sc
 
 ## Cache management
 We added a cache management to reduce the latency on common requests
-for the example, we use a in memory cache but you can easily change it for every system compatible with the 'cache-manager' nodejs package.
+for the example, we use a in memory cache but you can easily change it for every system compatible with the `cache-manager` nodejs package.
 
 ## License
 
