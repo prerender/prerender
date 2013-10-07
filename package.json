@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "phantomjs": "~1.9.2-0",
-    "phantom": "~0.5.2"
+    "phantom": "~0.5.2",
+    "cache-manager": "0.0.4"
   },
   "engines": {
     "node": "0.10.17",

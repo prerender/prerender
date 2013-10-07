@@ -38,6 +38,22 @@ We remove script tags because we don't want any framework specific routing/rende
 
 For example, if you rendered the HTML of an angular page but left the angular scripts in there, your browser would try to execute the angular routing and rendering on a page that no longer has any angular bindings.
 
+## Cache management
+We added a cache management to reduce the latency on common requests
+for the example, we use ain memory cache but you can easily change it for every system compatible with the `cache-manager` nodejs package.
+
+For exemple with the request:
+
+`GET` http://*.herokuapp.com/https://facebook.com
+
+First time: Overall Elapsed:	00:00:03.3174661
+
+With cache: Overall Elapsed:	00:00:00.0360119
+
+By default, cache system isn't enabled, you need to start prerender with `-c` or `--cache` to enable it.
+
+`node index.js -c`
+
 ## License
 
 The MIT License (MIT)
