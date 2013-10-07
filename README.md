@@ -40,6 +40,10 @@ First time: Overall Elapsed:	00:00:03.3174661
 
 With cache: Overall Elapsed:	00:00:00.0360119
 
+By default, cache system isn't enabled, you need to start prerender with `-c` or `--cache` to enable it.
+
+`node index.js -c`
+
 ## License
 
 The MIT License (MIT)
