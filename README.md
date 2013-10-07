@@ -28,6 +28,10 @@ We remove script tags because we don't want any framework specific routing/rende
 
 For example, if you rendered the HTML of an angular page but left the angular scripts in there, your browser would try to execute the angular routing and rendering on a page that no longer has any angular bindings.
 
+## Cache management
+We added a cache management to reduce the latency on common requests
+for the example, we use a in memory cache but you can easily change it for every system compatible with the 'cache-manager' nodejs package.
+
 ## License
 
 The MIT License (MIT)
