@@ -14,6 +14,10 @@ It is currently deployed at `http://prerender.herokuapp.com`, or you can deploy 
 	$ git push heroku master
 
 ## Running locally
+If you are running the prerender service locally. Make sure you set your middleware to point to your local instance with:
+`export PRERENDER_SERVICE_URL=<your local url>`
+Otherwise, it will 404 and your normal routing will take over and render the normal JS page.
+
 Make sure you have a copy of the phantomjs binary to run locally.
 
 	$ brew update
