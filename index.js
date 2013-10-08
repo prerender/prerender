@@ -51,6 +51,12 @@ Phantom.create({
                                 page.evaluate(function () {
                                     return document && document.getElementsByTagName('html')[0].outerHTML
                                 }, function(documentHTML) {
+                                    if(!documentHTML) {
+                                        res.writeHead(404);
+                                        res.end();
+                                        return page.close();
+                                    }
+
                                     var matches = documentHTML.match(/<script(?:.*?)>(?:[\S\s]*?)<\/script>/g);
 
                                     for( var i = 0; matches && i < matches.length; i++) {
