@@ -42,7 +42,7 @@ For example, if you rendered the HTML of an angular page but left the angular sc
 We use cache management to reduce the latency on common requests  
 The default is an in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
 
-For exemple with the request:
+For example, with the request:
 
 `GET` http://prerender.herokuapp.com/https://facebook.com
 
