@@ -12,12 +12,9 @@ if (process.argv[2] != null && (process.argv[2] == '-c' || process.argv[2] == '-
 }
 
 var testCache = function(url, cb) {
-    if (!cache) {
-        cb(null, null);
-    }
-    else {
-	    cache.get(url, cb);
-    }
+    if (cache) return cache.get(url, cb);
+
+    cb(null, null);
 }
 
 Phantom.create({
