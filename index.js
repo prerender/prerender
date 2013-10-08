@@ -1,7 +1,9 @@
 var phantom = require('phantom')
   , http = require('http');
 
-phantom.create(function(phantom) {
+phantom.create({
+    binary: require('phantomjs').path
+}, function(phantom) {
     http.createServer(function (req, res) {
         console.log('getting', req.url);
         phantom.createPage(function(page) {

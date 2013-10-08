@@ -14,10 +14,11 @@ It is currently deployed at `http://prerender.herokuapp.com`, or you can deploy 
 	$ git push heroku master
 
 ## Running locally
-Make sure you have a copy of the phantomjs binary to run locally.
-
-	$ brew update
-	$ brew install phantomjs
+	
+	$ npm install
+	$ node index.js
+	// also supports heroku style invokation using foreman
+	$ foreman start
 
 
 ## How it works
