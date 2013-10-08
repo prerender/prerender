@@ -59,7 +59,7 @@ Phantom.create({
                                     for( var i = 0; matches && i < matches.length; i++) {
                                         documentHTML = documentHTML.replace(matches[i], '');
                                     }
-                                    cache.set(req.url.substr(1), documentHTML);
+                                    if(cache) cache.set(req.url.substr(1), documentHTML);
                                     res.writeHead(200, {'Content-Type': 'text/html'});
                                     res.end(documentHTML);
                                     page.close();
