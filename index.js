@@ -25,15 +25,12 @@ Phantom.create({
 }, function(phantom) {
 
     http.createServer(function (req, res) {
-        var beforeTime = new Date;
         console.log('getting', req.url);
 
 	    testCache(req.url.substr(1), function (err, result) {
 	        if (!err && result != null) {
     	        res.writeHead(200, {'Content-Type': 'text/html'});
     	        res.end(result);
-                var afterTime = new Date
-                console.log('cached request took', afterTime.getTime() - beforeTime.getTime());
 	        } else {	
                 //hack to restart phantom if it crashes...for now
                 var timeoutID = setTimeout(function() {
@@ -66,8 +63,6 @@ Phantom.create({
                                     res.writeHead(200, {'Content-Type': 'text/html'});
                                     res.end(documentHTML);
                                     page.close();
-                                    var afterTime = new Date
-                                    console.log('render request took', afterTime.getTime() - beforeTime.getTime());
                                 });
                             }, 50);
                         };
