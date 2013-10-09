@@ -38,6 +38,9 @@ phantom.create({
                             pendingRequests--;
                         }
                     });
+                    page.set('onResourceError', function() {
+                        pendingRequests--;
+                    });
                     page.open(url, function (status) {
                         if ('fail' === status) {
                             res.writeHead(404);
