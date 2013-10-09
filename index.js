@@ -22,41 +22,58 @@ phantom.create({
     http.createServer(function (req, res) {
         var url = req.url.substr(1);
         console.log('getting', url);
-        cache.get(req.url.substr(1), function (err, result) {
+        cache.get(url, function (err, result) {
             if (!err && result) {
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.end(result);
             } else {
                 var start = new Date();
                 phantom.createPage(function (page) {
+                    var pendingRequests = 0;
+                    page.set('onResourceRequested', function () {
+                        pendingRequests++;
+                    });
+                    page.set('onResourceReceived', function (response) {
+                        if ('end' === response.stage) {
+                            pendingRequests--;
+                        }
+                    });
                     page.open(url, function (status) {
                         if ('fail' === status) {
                             res.writeHead(404);
                             res.end();
                             page.close();
                         } else {
-                            setTimeout(function () {
-                                page.evaluate(function () {
-                                    return document && document.getElementsByTagName('html')[0].outerHTML
-                                }, function (documentHTML) {
-                                    if (!documentHTML) {
-                                        res.writeHead(404);
-                                        res.end();
+                            var intervalStart = new Date(), interval = setInterval(function () {
+                                var noPending = pendingRequests === 0, timeout = new Date().getTime() - intervalStart > 10000;
+                                if (noPending || timeout) {
+                                    clearInterval(interval);
+                                    if (noPending) {
+                                        page.evaluate(function () {
+                                            return document && document.getElementsByTagName('html')[0].outerHTML
+                                        }, function (documentHTML) {
+                                            if (!documentHTML) {
+                                                res.writeHead(404);
+                                                res.end();
+                                            } else {
+                                                var matches = documentHTML.match(/<script(?:.*?)>(?:[\S\s]*?)<\/script>/g);
+                                                for (var i = 0; matches && i < matches.length; i++) {
+                                                    documentHTML = documentHTML.replace(matches[i], '');
+                                                }
+                                                cache.set(url, documentHTML);
+                                                res.writeHead(200, {'Content-Type': 'text/html'});
+                                                res.end(documentHTML);
+                                                console.log('got', url, 'in', new Date().getTime() - start.getTime() + 'ms')
+                                            }
+                                            page.close();
+                                        });
                                     } else {
-                                        var matches = documentHTML.match(/<script(?:.*?)>(?:[\S\s]*?)<\/script>/g);
-                                        for (var i = 0; matches && i < matches.length; i++) {
-                                            documentHTML = documentHTML.replace(matches[i], '');
-                                        }
-                                        cache.set(url, documentHTML);
-                                        res.writeHead(200, {'Content-Type': 'text/html'});
-                                        res.end(documentHTML);
-                                        console.log('got', url, 'in', new Date().getTime() - start.getTime() + 'ms')
+                                        res.writeHead(408);
+                                        res.end();
                                     }
-                                    page.close();
-                                });
+                                }
                             }, 50);
                         }
-                        ;
                     });
                 });
             }
