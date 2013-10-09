@@ -70,6 +70,7 @@ phantom.create({
                                     } else {
                                         res.writeHead(408);
                                         res.end();
+                                        page.close();
                                     }
                                 }
                             }, 50);
