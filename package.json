@@ -1,11 +1,11 @@
 {
   "author": "Todd Hooper",
-  "name": "javascript-seo",
+  "name": "prerender",
   "description": "Service to pre-render javascript rendered pages for SEO",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thoop/javascript-seo"
+    "url": "https://github.com/collectiveip/prerender"
   },
   "dependencies": {
     "phantomjs": "~1.9.2-0",
