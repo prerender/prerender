@@ -1,5 +1,6 @@
 var phantom = require('phantom'),
     http = require('http'),
+    url = require('url'),
     cache_manager = require('cache-manager'),
     cache = {
         get: function (url, cb) {
@@ -16,11 +17,23 @@ if (process.argv[2] != null && (process.argv[2] == '-c' || process.argv[2] == '-
     });
 }
 
+var getUrl = function(req) {
+    if (req.url.indexOf('_escaped_fragment_') ==-1) return req.url;
+
+    var parts = url.parse(req.url, true);
+
+    if(parts.query['_escaped_fragment_']) parts.hash = '#!' + parts.query['_escaped_fragment_'];
+    delete parts.query['_escaped_fragment_'];
+    delete parts.search;
+
+    return url.format(parts);
+};
+
 phantom.create({
     binary: require('phantomjs').path
 }, function (phantom) {
     http.createServer(function (req, res) {
-        var url = req.url.substr(1);
+        var url = getUrl(req).substr(1);
         console.log('getting', url);
         cache.get(url, function (err, result) {
             if (!err && result) {
