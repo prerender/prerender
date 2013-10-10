@@ -61,7 +61,7 @@ phantom.create({
                             page.close();
                         } else {
                             var intervalStart = new Date(), interval = setInterval(function () {
-                                var noPending = pendingRequests === 0, timeout = new Date().getTime() - intervalStart > 10000;
+                                var noPending = pendingRequests <= 0, timeout = new Date().getTime() - intervalStart > 10000;
                                 if (noPending || timeout) {
                                     clearInterval(interval);
                                     if (noPending) {
