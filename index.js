@@ -29,7 +29,7 @@ var getUrl = function(req) {
     return url.format(parts);
 };
 
-phantom.create({
+phantom.create('--load-images=false', {
     binary: require('phantomjs').path
 }, function (phantom) {
     http.createServer(function (req, res) {
