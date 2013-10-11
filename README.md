@@ -1,7 +1,9 @@
 Prerender Service
 =========================== 
 
-This is a node server that uses phantomjs to render a javascript-rendered page as HTML. It should be used in conjunction with [prerender_rails](https://github.com/collectiveip/prerender_rails) or [prerender-node](https://github.com/collectiveip/prerender-node) middleware to serve the rendered HTML to crawlers for SEO. You don't have to run this service on your own since I have it deployed on Heroku already. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node) 
+This is a node server that uses phantomjs to render a javascript-rendered page as HTML. It should be used in conjunction with [prerender_rails](https://github.com/collectiveip/prerender_rails) or [prerender-node](https://github.com/collectiveip/prerender-node) middleware to serve the rendered HTML to crawlers for SEO. You don't have to run this service on your own since I have it deployed on Heroku already. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node). 
+
+This service also adheres to google's _escaped_fragment_ proposal for AJAX calls if you use it on your website.
 
 It is also meant to be proxied through your server so that any relative links to things like CSS will work.
 
