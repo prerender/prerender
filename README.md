@@ -1,7 +1,7 @@
 Prerender Service
 =========================== 
 
-This is a node server that uses phantomjs to render a javascript-rendered page as HTML. It should be used in conjunction with [prerender_rails](https://github.com/collectiveip/prerender_rails) or [prerender-node](https://github.com/collectiveip/prerender-node) middleware to serve the rendered HTML to crawlers for SEO. You don't have to run this service on your own since I have it deployed on Heroku already. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node). 
+This is a node server that uses phantomjs to render a javascript-rendered page as HTML. It should be used in conjunction with [these middleware libraries](#middleware) to serve the rendered HTML to crawlers for SEO. You don't have to run this service on your own since I have it deployed on Heroku already. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node). 
 
 This service also adheres to google's `_escaped_fragment_` proposal for AJAX calls if you use it on your website.
 
@@ -55,6 +55,27 @@ With cache: Overall Elapsed:	00:00:00.0360119
 By default, cache system isn't enabled, you need to start prerender with `-c` or `--cache` to enable it.
 
 `node index.js -c`
+
+### <a id='middleware'></a>
+## Middleware
+
+This is a list of middleware available to use with the prerender service:
+
+#### Official middleware
+
+###### Javascript
+* [prerender-node](https://github.com/collectiveip/prerender-node) (Express)
+
+###### Ruby
+* [prerender_rails](https://github.com/collectiveip/prerender_rails) (Rails)
+
+#### Community middleware
+
+###### PHP
+* [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
+* [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
+
+Request more middleware for a different framework in this [issue](https://github.com/collectiveip/prerender/issues/12).
 
 ## License
 

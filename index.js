@@ -66,7 +66,15 @@ phantom.create('--load-images=false', {
                                     clearInterval(interval);
                                     if (noPending) {
                                         page.evaluate(function () {
-                                            return document && document.getElementsByTagName('html')[0].outerHTML
+                                            try {
+                                                var html = document && document.getElementsByTagName('html');
+                                                if (html && html[0]) {
+                                                    return html[0].outerHTML;
+                                                }
+                                                return '';
+                                            } catch (e) {
+                                                return '';
+                                            }
                                         }, function (documentHTML) {
                                             if (!documentHTML) {
                                                 res.writeHead(404);
