@@ -22,7 +22,7 @@ Otherwise, it will 404 and your normal routing will take over and render the nor
 	
 	$ npm install
 	$ node index.js
-	// also supports heroku style invokation using foreman
+	// also supports heroku style invocation using foreman
 	$ foreman start
 
 
