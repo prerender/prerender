@@ -2,7 +2,7 @@
   "author": "Todd Hooper",
   "name": "prerender",
   "description": "Service to pre-render javascript rendered pages for SEO",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/collectiveip/prerender"
@@ -10,6 +10,7 @@
   "dependencies": {
     "phantomjs": "~1.9.2-0",
     "phantom": "~0.5.2",
+    "lodash": "~2.2.1",
     "cache-manager": "0.0.4"
   },
   "engines": {
