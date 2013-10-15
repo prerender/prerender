@@ -137,6 +137,9 @@ This is a list of middleware available to use with the prerender service:
 * [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
 * [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
 
+###### Nginx
+* [Reverse Proxy Example](https://gist.github.com/Stanback/6998085)
+
 Request more middleware for a different framework in this [issue](https://github.com/collectiveip/prerender/issues/12).
 
 
