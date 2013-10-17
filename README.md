@@ -140,6 +140,9 @@ This is a list of middleware available to use with the prerender service:
 ###### Nginx
 * [Reverse Proxy Example](https://gist.github.com/Stanback/6998085)
 
+###### Apache
+* [mod_rewrite](https://gist.github.com/Stanback/7028309)
+
 Request more middleware for a different framework in this [issue](https://github.com/collectiveip/prerender/issues/12).
 
 
