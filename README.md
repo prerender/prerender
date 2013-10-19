@@ -9,6 +9,8 @@ This service also adheres to google's `_escaped_fragment_` proposal for AJAX cal
 
 It is also meant to be proxied through your server so that any relative links to things like CSS will work.
 
+You can use Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
+
 It is currently deployed at `http://prerender.herokuapp.com`, or you can deploy your own.
 
 
@@ -134,8 +136,26 @@ You can add the whitelisted domains to the plugin itself, or use the `ALLOWED_DO
 `export ALLOWED_DOMAINS=www.prerender.io,prerender.io`
 
 
-### html-caching
-###### Turn on the html-caching plugin (uncomment it in `index.js`) to enable local caching.
+### <a id='s3-html-cache'></a>
+### s3-html-cache
+###### Turn on the s3-html-cache plugin (uncomment it in `index.js`) to enable s3 caching.
+
+A `GET` request will check S3 for a cached copy. If a cached copy is found, it will return that. Otherwise, it will make the request to your server and then persist the HTML to the S3 cache.
+
+A `POST` request will skip the S3 cache. It will make a request to your server and then persist the HTML to the S3 cache. The `POST` is meant to update the cache.
+
+You'll need to sign up with Amazon Web Services and export these 3 environment variables.
+
+```
+$ export AWS_ACCESS_KEY_ID=<aws access key>
+$ export AWS_SECRET_ACCESS_KEY=<aws secret access key>
+$ export S3_BUCKET_NAME=<bucket name>
+```
+
+Warning! Your keys should be kept private and you'll be charged for all files uploaded to S3.
+
+### in-memory-html-cache
+###### Turn on the in-memory-html-cache plugin (uncomment it in `index.js`) to enable local caching.
 
 The default is an in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
 
