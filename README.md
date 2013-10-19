@@ -154,6 +154,9 @@ $ export S3_BUCKET_NAME=<bucket name>
 
 Warning! Your keys should be kept private and you'll be charged for all files uploaded to S3.
 
+> You can also export the S3_PREFIX_KEY variable so that the key (which is by default the complete requested URL) is
+prefixed. This is useful if you want to organize the snapshots in the same bucket.
+
 ### in-memory-html-cache
 ###### Turn on the in-memory-html-cache plugin (uncomment it in `index.js`) to enable local caching.
 
