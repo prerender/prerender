@@ -154,6 +154,9 @@ $ export S3_BUCKET_NAME=<bucket name>
 
 Warning! Your keys should be kept private and you'll be charged for all files uploaded to S3.
 
+> If Prerender is hosted on a EC2 instance, you can also take advantage of [IAM instance roles](http://aws.typepad.com/aws/2012/06/iam-roles-for-ec2-instances-simplified-secure-access-to-aws-service-apis-from-ec2.html)
+so that you don't need to export your AWS credentials.
+
 ### in-memory-html-cache
 ###### Turn on the in-memory-html-cache plugin (uncomment it in `index.js`) to enable local caching.
 
