@@ -140,6 +140,10 @@ You can add the whitelisted domains to the plugin itself, or use the `ALLOWED_DO
 ### s3-html-cache
 ###### Turn on the s3-html-cache plugin (uncomment it in `index.js`) to enable s3 caching.
 
+A `GET` request will check S3 for a cached copy. If a cached copy is found, it will return that. Otherwise, it will make the request to your server and then persist the HTML to the S3 cache.
+
+A `POST` request will skip the S3 cache. It will make a request to your server and then persist the HTML to the S3 cache. The `POST` is meant to update the cache.
+
 You'll need to sign up with Amazon Web Services and export these 3 environment variables.
 
 ```
