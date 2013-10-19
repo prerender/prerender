@@ -1,7 +1,7 @@
 Prerender Service
 =========================== 
 
-This is a node server that uses phantomjs to render a javascript-rendered page as HTML.
+This is a node server from [prerender.io](http://prerender.io) that uses phantomjs to render a javascript-rendered page as HTML.
 
 It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Facebook and Twitter also crawl the prerendered HTML when someone posts a link to your site on their social network. You don't have to run this service on your own since I have it deployed on Heroku already. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node). 
 
@@ -50,15 +50,15 @@ We use a plugin system in the same way that Connect and Express use middleware. 
 
 Plugins are in the `lib/plugins` directory, and add functionality to the prerender service.
 
-Each plugin can implement any of the 3 plugin methods:
+Each plugin can implement any of the plugin methods:
 
 ####`init = function(){}`
-`init` is called when you call `prerender.use(require('my_plugin'));`.
+called when you call `prerender.use(require('my_plugin'));`.
 
 Use this function to initialize defaults.
 
 ####`beforePhantomRequest = function(req, res, next){}`
-`beforePhantomRequest` is called at the beginning of the request lifecycle, before phantomjs starts to load the url.
+called at the beginning of the request lifecycle, before phantomjs starts to load the url.
 
 Use this function to short circuit the lifecycle.  
 Examples:
@@ -66,8 +66,16 @@ Examples:
 * Find and return a cached version of the url before loading it.
 * Reject a request based on the host sending too many requests per second.
 
+####`pluginsOnPhantomPageCreate = function(req, res, next){}`
+called after the phantomjs page has been created.
+
+Use this function to bind custom functions to phantomjs events.  
+Example:
+
+* Outputting to the terminal console when phantomjs has console output.
+
 ####`afterPhantomRequest = function(req, res, next){}`
-`afterPhantomRequest` is called at the end of the request lifecycle, after phantomjs successfully loads the HTML for a url.
+called at the end of the request lifecycle, after phantomjs successfully loads the HTML for a url.
 
 Use this function to access/modify the HTML returned from a url.  
 Examples:
@@ -89,20 +97,45 @@ console.log(req.prerender);
 }
 ```
 
+## Available plugins
 
-## Why do you remove script tags?
+### remove-script-tags
 ###### Turn off the remove-script-tags plugin (comment it in `index.js`) to disable script tag removal.
 
 We remove script tags because we don't want any framework specific routing/rendering to happen on the rendered HTML once it's executed by the crawler. The crawlers may not execute javascript, but we'd rather be safe than have something get screwed up.
 
 For example, if you rendered the HTML of an angular page but left the angular scripts in there, your browser would try to execute the angular routing and rendering on a page that no longer has any angular bindings.
 
+### http-headers
+###### Turn off the html-headers plugin (comment it in `index.js`) to disable soft-http-headers.
+
+If your Javascript routing has a catch-all for things like 404's, you can tell the prerender service to serve a 404 to google instead of a 200. This way, google won't index your 404's.
+
+Add these tags in the `<head>` of your page if you want to serve soft http headers. Note: Prerender will still send the HTML of the page. This just modifies the status code and headers being sent.
+
+Example: telling prerender to server this page as a 404
+```html
+<meta name="prerender-status-code" content="404">
+```
+
+Example: telling prerender to serve this page as a 302 redirect
+```html
+<meta name="prerender-status-code" content="302">
+<meta name="prerender-header" content="Location: http://www.google.com">
+```
+
+### whitelist
+###### Turn on the whitelist plugin (uncomment it in `index.js`) to enable the whitelist.
+
+If you only want to allow requests to a certain domain, use this plugin to cause a 404 for any other domains.
+
+You can add the whitelisted domains to the plugin itself, or use the `ALLOWED_DOMAINS` environment variable.
+
+`export ALLOWED_DOMAINS=www.prerender.io,prerender.io`
 
 
-## Cache management
+### html-caching
 ###### Turn on the html-caching plugin (uncomment it in `index.js`) to enable local caching.
-
-We use cache management to reduce the latency on common requests
 
 The default is an in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
 
@@ -114,7 +147,11 @@ First time: Overall Elapsed:	00:00:03.3174661
 
 With cache: Overall Elapsed:	00:00:00.0360119
 
-By default, cache system isn't enabled, you need to uncomment it in `index.js` to enable it.
+
+### logger
+###### Turn on the logger plugin (uncomment it in `index.js`) to enable logging to the console from phantomjs.
+
+This will show console.log's from the phantomjs page in your local console. Great for debugging.
 
 
 
@@ -136,6 +173,9 @@ This is a list of middleware available to use with the prerender service:
 ###### PHP
 * [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
 * [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
+
+###### Java
+* [prerender-java](https://github.com/greengerong/prerender-java)
 
 ###### Nginx
 * [Reverse Proxy Example](https://gist.github.com/Stanback/6998085)
