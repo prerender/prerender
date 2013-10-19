@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "phantomjs": "~1.9.2-0",
-    "phantom": "~0.5.2",
+    "phantom": "git://github.com/sgentle/phantomjs-node.git#4b10110cd3c67753786a6f120ed0b1895839bf18",
     "lodash": "~2.2.1",
     "cache-manager": "0.1.2",
     "aws-sdk": "~1.9.0"
