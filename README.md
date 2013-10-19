@@ -157,6 +157,10 @@ Warning! Your keys should be kept private and you'll be charged for all files up
 > If Prerender is hosted on a EC2 instance, you can also take advantage of [IAM instance roles](http://aws.typepad.com/aws/2012/06/iam-roles-for-ec2-instances-simplified-secure-access-to-aws-service-apis-from-ec2.html)
 so that you don't need to export your AWS credentials.
 
+> You can also export the S3_PREFIX_KEY variable so that the key (which is by default the complete requested URL) is
+prefixed. This is useful if you want to organize the snapshots in the same bucket.
+
+
 ### in-memory-html-cache
 ###### Turn on the in-memory-html-cache plugin (uncomment it in `index.js`) to enable local caching.
 
