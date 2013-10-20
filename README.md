@@ -135,6 +135,15 @@ You can add the whitelisted domains to the plugin itself, or use the `ALLOWED_DO
 
 `export ALLOWED_DOMAINS=www.prerender.io,prerender.io`
 
+### blacklist
+###### Turn off the blacklist plugin (comment it in `index.js`) to disable the blacklist.
+
+If you want to disallow requests to a certain domain, use this plugin to cause a 404 for the domains.
+
+You can add the blacklisted domains to the plugin itself, or use the `BLACKLISTED_DOMAINS` environment variable.
+
+`export BLACKLISTED_DOMAINS=yahoo.com,www.google.com`
+
 
 ### <a id='s3-html-cache'></a>
 ### s3-html-cache
