@@ -54,12 +54,12 @@ Plugins are in the `lib/plugins` directory, and add functionality to the prerend
 
 Each plugin can implement any of the plugin methods:
 
-####`init = function(){}`
+####`init()`
 called when you call `prerender.use(require('my_plugin'));`.
 
 Use this function to initialize defaults.
 
-####`beforePhantomRequest = function(req, res, next){}`
+####`beforePhantomRequest(req, res, next)`
 called at the beginning of the request lifecycle, before phantomjs starts to load the url.
 
 Use this function to short circuit the lifecycle.  
@@ -68,7 +68,7 @@ Examples:
 * Find and return a cached version of the url before loading it.
 * Reject a request based on the host sending too many requests per second.
 
-####`pluginsOnPhantomPageCreate = function(req, res, next){}`
+####`onPhantomPageCreate(req, res, next)`
 called after the phantomjs page has been created.
 
 Use this function to bind custom functions to phantomjs events.  
@@ -76,13 +76,24 @@ Example:
 
 * Outputting to the terminal console when phantomjs has console output.
 
-####`afterPhantomRequest = function(req, res, next){}`
+####`afterPhantomRequest(req, res, next)`
 called at the end of the request lifecycle, after phantomjs successfully loads the HTML for a url.
 
 Use this function to access/modify the HTML returned from a url.  
 Examples:
 
 * Save off the HTML to a cache for quick access later.  
+* Change the HTML to remove all script tags.
+
+####`beforeSend(req, res, next)`
+called any time res.send is called, even if a plugin calls res.send or prerender sends a res.send(404)
+
+The difference between this and `afterPhantomRequest` is `beforeSend` always happens. `afterPhantomRequest` only happens on the completion of the normal lifecycle.
+
+Use this function to do things with every request.  
+Examples:
+
+* Print out info about the request.
 * Change the HTML to remove all script tags.
 
 
