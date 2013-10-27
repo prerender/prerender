@@ -182,11 +182,11 @@ prefixed. This is useful if you want to organize the snapshots in the same bucke
 
 ###### CloudFront
 
-You may be tempted to use CloudFront (the Amazon's CDN) to accelerate even more the process by caching HTML. Doing so is
+You may be tempted to use CloudFront (the Amazon's CDN) to accelerate the process even more by caching HTML. Doing so is
 easy: just create a CloudFront distribution in front of your Prerender server. By default, Prerender returns a response
 with a Cache-Control value of 86400 seconds (24 hours). CloudFront will reuse this header, so that if the same URL
 (let's say: `http://myprerender-service.com/http://www.myurl.com`) is asked two times within 24 hours, CloudFront will
-immediately returns the answer without even hitting your Prerender service.
+immediately return the answer without even hitting your Prerender service.
 
 However, please note that if your Prerender service is hosted on the same AWS region as your S3 bucket, the performance
 increase may be minor (latency between AWS services in same region is already pretty low).
