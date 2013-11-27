@@ -19,7 +19,7 @@ General code changes
   enforces clear delineation of responsibilities between server and client
   work.
 * Instead of the `.plugins*` methods for firing off middleware events, I added
-  a generic `._fireMiddleware` method to reduce some of the code.
+  a generic `._pluginEvent` method to reduce some of the code.
 * Some bits of logic has been shifted around, but I tried to maintain as much
   compatibility as possible, especially with respect to plugins.
 
