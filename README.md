@@ -1,32 +1,68 @@
 Prerender Service
 =========================== 
 
-This is a node server from [prerender.io](http://prerender.io) that uses phantomjs to render a javascript-rendered page as HTML.
+Google, Facebook, Twitter, Yahoo, and Bing are constantly trying to view your website... but they don't execute javascript. That's why we built Prerender. Prerender is perfect for AngularJS SEO, BackboneJS SEO, EmberJS SEO, and any other javascript framework.
 
-It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Facebook and Twitter also crawl the prerendered HTML when someone posts a link to your site on their social network. You don't have to run this service on your own since I have it deployed on Heroku already. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node). 
+Behind the scenes, Prerender is a node server from [prerender.io](http://prerender.io) that uses phantomjs to create static HTML out of a javascript page. We host this as a service at [prerender.io](http://prerender.io) but we also open sourced it because we believe basic SEO is a right, not a privilege!
 
-This service also adheres to google's `_escaped_fragment_` proposal for AJAX calls if you use it on your website.
+It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node). 
 
-It is also meant to be proxied through your server so that any relative links to things like CSS will work.
+Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend you use. It's easy:
+- Just add &lt;meta name="fragment" content="!"> to the &lt;head> of all of your pages
+- If you use hash urls (#), change them to the hash-bang (#!)
+- That's it! Perfect SEO on javascript pages.
 
-You can use Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
-
-It is currently deployed at `http://prerender.herokuapp.com`, or you can deploy your own.
+Prerender includes lots of plugins including Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
 
 
+### <a id='middleware'></a>
+## Middleware
 
-## Deploying your own
+This is a list of middleware available to use with the prerender service:
 
-	$ git clone https://github.com/collectiveip/prerender.git
-	$ heroku create
-	$ git push heroku master
+#### Official middleware
 
+###### Javascript
+* [prerender-node](https://github.com/collectiveip/prerender-node) (Express)
+
+###### Ruby
+* [prerender_rails](https://github.com/collectiveip/prerender_rails) (Rails)
+
+#### Community middleware
+
+###### PHP
+* [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
+* [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
+
+###### Java
+* [prerender-java](https://github.com/greengerong/prerender-java)
+
+###### Nginx
+* [Reverse Proxy Example](https://gist.github.com/Stanback/6998085)
+
+###### Apache
+* [mod_rewrite](https://gist.github.com/Stanback/7028309)
+
+Request more middleware for a different framework in this [issue](https://github.com/collectiveip/prerender/issues/12).
+
+
+
+## How it works
+This is a simple service that only takes a url and returns the rendered HTML (with all script tags removed).
+
+Note: you should proxy the request through your server (using middleware) so that any relative links to CSS/images/etc still work.
+
+`GET` http://prerender.herokuapp.com/https://google.com
+
+`GET` http://prerender.herokuapp.com/https://google.com/search?q=angular
 
 
 ## Running locally
-If you are running the prerender service locally. Make sure you set your middleware to point to your local instance with:
+If you are trying to test Prerender with your website on localhost, you'll have to run the Prerender server locally so that Prerender can access your local dev website.
+
+If you are running the prerender service locally. Make sure you set your middleware to point to your local Prerender server with:
+
 `export PRERENDER_SERVICE_URL=<your local url>`
-Otherwise, it will 404 and your normal routing will take over and render the normal JS page.
 	
 	$ npm install
 	$ node index.js
@@ -34,17 +70,13 @@ Otherwise, it will 404 and your normal routing will take over and render the nor
 	$ foreman start
 
 
+## Deploying your own on heroku
 
-## How it works
-This is a simple service that only takes a url and returns the rendered HTML (with all script tags removed).
+	$ git clone https://github.com/collectiveip/prerender.git
+	$ heroku create
+	$ git push heroku master
 
-Note: you should proxy the request through your server so that relative links to CSS still work (see [prerender_rails](https://github.com/collectiveip/prerender_rails) or [prerender-node](https://github.com/collectiveip/prerender-node) for an example)
-
-`GET` http://prerender.herokuapp.com/https://google.com
-
-`GET` http://prerender.herokuapp.com/https://google.com/search?q=angular
-
-
+#Customization
 
 ## Plugins
 
@@ -209,39 +241,6 @@ With cache: Overall Elapsed:	00:00:00.0360119
 ###### Turn on the logger plugin (uncomment it in `index.js`) to enable logging to the console from phantomjs.
 
 This will show console.log's from the phantomjs page in your local console. Great for debugging.
-
-
-
-### <a id='middleware'></a>
-## Middleware
-
-This is a list of middleware available to use with the prerender service:
-
-#### Official middleware
-
-###### Javascript
-* [prerender-node](https://github.com/collectiveip/prerender-node) (Express)
-
-###### Ruby
-* [prerender_rails](https://github.com/collectiveip/prerender_rails) (Rails)
-
-#### Community middleware
-
-###### PHP
-* [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
-* [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
-
-###### Java
-* [prerender-java](https://github.com/greengerong/prerender-java)
-
-###### Nginx
-* [Reverse Proxy Example](https://gist.github.com/Stanback/6998085)
-
-###### Apache
-* [mod_rewrite](https://gist.github.com/Stanback/7028309)
-
-Request more middleware for a different framework in this [issue](https://github.com/collectiveip/prerender/issues/12).
-
 
 
 ## License
