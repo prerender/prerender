@@ -8,10 +8,6 @@ Performance changes
   performance-wise by phantomjs/the phantomjs-node bridge crashing. Whereas
   before the system had to wait for everything to restart, this will just
   load balance to another client.
-* Prerender no longer polls every 50ms for when all the resources have been
-  downloaded. Instead it's checked for completion immediately after each
-  resource has been downloaded. This should marginally increase performance.
-  The 20 second timeout has been preserved.
 
 General code changes
 
