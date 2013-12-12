@@ -52,9 +52,9 @@ This is a simple service that only takes a url and returns the rendered HTML (wi
 
 Note: you should proxy the request through your server (using middleware) so that any relative links to CSS/images/etc still work.
 
-`GET` http://prerender.herokuapp.com/https://google.com
+`GET` http://service.prerender.io/https://google.com
 
-`GET` http://prerender.herokuapp.com/https://google.com/search?q=angular
+`GET` http://service.prerender.io/https://google.com/search?q=angular
 
 
 ## Running locally
@@ -230,7 +230,7 @@ The default is an in memory cache but you can easily change it to any caching sy
 
 For example, with the request:
 
-`GET` http://prerender.herokuapp.com/https://facebook.com
+`GET` http://service.prerender.io/https://facebook.com
 
 First time: Overall Elapsed:	00:00:03.3174661
 
