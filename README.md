@@ -28,6 +28,9 @@ This is a list of middleware available to use with the prerender service:
 ###### Ruby
 * [prerender_rails](https://github.com/collectiveip/prerender_rails) (Rails)
 
+###### Apache
+* [.htaccess](https://gist.github.com/thoop/8072354)
+
 #### Community middleware
 
 ###### PHP
@@ -41,7 +44,7 @@ This is a list of middleware available to use with the prerender service:
 * [Reverse Proxy Example](https://gist.github.com/Stanback/6998085)
 
 ###### Apache
-* [mod_rewrite](https://gist.github.com/Stanback/7028309)
+* [.htaccess](https://gist.github.com/Stanback/7028309)
 
 Request more middleware for a different framework in this [issue](https://github.com/collectiveip/prerender/issues/12).
 
