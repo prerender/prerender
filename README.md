@@ -31,6 +31,9 @@ This is a list of middleware available to use with the prerender service:
 ###### Apache
 * [.htaccess](https://gist.github.com/thoop/8072354)
 
+###### Nginx
+* [nginx.conf](https://gist.github.com/thoop/8165802)
+
 #### Community middleware
 
 ###### PHP
