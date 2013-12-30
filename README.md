@@ -43,6 +43,9 @@ This is a list of middleware available to use with the prerender service:
 ###### Java
 * [prerender-java](https://github.com/greengerong/prerender-java)
 
+###### Grails
+* [grails-prerender](https://github.com/tuler/grails-prerender)
+
 ###### Nginx
 * [Reverse Proxy Example](https://gist.github.com/Stanback/6998085)
 
