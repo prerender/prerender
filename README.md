@@ -5,7 +5,7 @@ Google, Facebook, Twitter, Yahoo, and Bing are constantly trying to view your we
 
 Behind the scenes, Prerender is a node server from [prerender.io](http://prerender.io) that uses phantomjs to create static HTML out of a javascript page. We host this as a service at [prerender.io](http://prerender.io) but we also open sourced it because we believe basic SEO is a right, not a privilege!
 
-It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Get started in two lines of code using [Rails](https://github.com/collectiveip/prerender_rails) or [Node](https://github.com/collectiveip/prerender-node). 
+It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Get started in two lines of code using [Rails](https://github.com/prerender/prerender_rails) or [Node](https://github.com/prerender/prerender-node). 
 
 Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend you use. It's easy:
 - Just add &lt;meta name="fragment" content="!"> to the &lt;head> of all of your pages
@@ -24,10 +24,10 @@ This is a list of middleware available to use with the prerender service:
 #### Official middleware
 
 ###### Javascript
-* [prerender-node](https://github.com/collectiveip/prerender-node) (Express)
+* [prerender-node](https://github.com/prerender/prerender-node) (Express)
 
 ###### Ruby
-* [prerender_rails](https://github.com/collectiveip/prerender_rails) (Rails)
+* [prerender_rails](https://github.com/prerender/prerender_rails) (Rails)
 
 ###### Apache
 * [.htaccess](https://gist.github.com/thoop/8072354)
@@ -53,7 +53,7 @@ This is a list of middleware available to use with the prerender service:
 ###### Apache
 * [.htaccess](https://gist.github.com/Stanback/7028309)
 
-Request more middleware for a different framework in this [issue](https://github.com/collectiveip/prerender/issues/12).
+Request more middleware for a different framework in this [issue](https://github.com/prerender/prerender/issues/12).
 
 
 
@@ -82,7 +82,7 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 ## Deploying your own on heroku
 
-	$ git clone https://github.com/collectiveip/prerender.git
+	$ git clone https://github.com/prerender/prerender.git
 	$ heroku create
 	$ git push heroku master
 
@@ -201,7 +201,7 @@ This will show console.log's from the phantomjs page in your local console. Grea
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Todd Hooper &lt;todd@collectiveip.com&gt;
+Copyright (c) 2013 Todd Hooper &lt;todd@prerender.io&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
