@@ -2,7 +2,7 @@
   "author": "Todd Hooper",
   "name": "prerender",
   "description": "Service to pre-render javascript rendered pages for SEO",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/prerender/prerender"
