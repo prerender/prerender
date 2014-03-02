@@ -196,6 +196,14 @@ With cache: Overall Elapsed:	00:00:00.0360119
 
 This will show console.log's from the phantomjs page in your local console. Great for debugging.
 
+### mongodbCache
+
+Caches requests in a MongoDB database. Available at https://github.com/lammertw/prerender-mongodb-cache
+
+### memjsCache
+
+Caches requests in a memjs service. Available at https://github.com/lammertw/prerender-memjs-cache
+
 
 ## License
 
