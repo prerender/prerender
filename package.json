@@ -11,6 +11,7 @@
     "phantom-cluster": "git://github.com/dailymuse/phantom-cluster.git#87ebc9f2c5fc81792aa4c98ae1c6cf44c784cc5e",
     "lodash": "~2.4.0",
     "cache-manager": "0.2.0",
-    "aws-sdk": "~1.13.0"
+    "aws-sdk": "~1.13.0",
+    "gzip-js": "~0.3.2"
   }
 }
