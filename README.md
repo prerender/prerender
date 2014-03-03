@@ -198,11 +198,12 @@ This will show console.log's from the phantomjs page in your local console. Grea
 
 ### mongodbCache
 
-Caches requests in a MongoDB database. Available at https://github.com/lammertw/prerender-mongodb-cache
+Caches pages in a MongoDB database. Available at [prerender-mongodb-cache](https://github.com/lammertw/prerender-mongodb-cache) by [@lammertw](https://github.com/lammertw)
+
 
 ### memjsCache
 
-Caches requests in a memjs service. Available at https://github.com/lammertw/prerender-memjs-cache
+Caches pages in a memjs(memcache) service. Available at [prerender-memjs-cache](https://github.com/lammertw/prerender-memjs-cache) by [@lammertw](https://github.com/lammertw)
 
 
 ## License
