@@ -8,7 +8,7 @@ var server = prerender({
     messageTimeout: process.env.PHANTOM_CLUSTER_MESSAGE_TIMEOUT
 }, {gzip: true});
 
-// server.use(prerender.whitelist());
+server.use(prerender.whitelist());
 server.use(prerender.blacklist());
 // server.use(prerender.logger());
 server.use(prerender.removeScriptTags());
