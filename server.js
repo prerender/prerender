@@ -8,6 +8,7 @@ var server = prerender({
     messageTimeout: process.env.PHANTOM_CLUSTER_MESSAGE_TIMEOUT
 });
 
+
 // server.use(prerender.whitelist());
 server.use(prerender.blacklist());
 // server.use(prerender.logger());
