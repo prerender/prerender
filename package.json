@@ -2,7 +2,7 @@
   "author": "Prerender.io",
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/prerender/prerender"
@@ -11,7 +11,7 @@
     "lodash": "~2.4.0",
     "cache-manager": "0.2.0",
     "aws-sdk": "~1.13.0",
-    "phantom": "~0.5.4",
+    "phantom": "git://github.com/thoop/phantomjs-node.git#e71b4e6e7420272d1c2a75f9ef95f40a8b08c242",
     "phantomjs": "~1.9.7-1"
   }
 }
