@@ -108,9 +108,9 @@ Each plugin can implement any of the plugin methods:
 
 ####`beforePhantomRequest(req, res, next)`
 
-####`onPhantomPageCreate(page, context, next)`
+####`onPhantomPageCreate(req, res, next)`
 
-####`afterPhantomRequest(page, context, next)`
+####`afterPhantomRequest(req, res, next)`
 
 ####`beforeSend(req, res, next)`
 
@@ -185,7 +185,7 @@ The default is an in memory cache but you can easily change it to any caching sy
 
 For example, with the request:
 
-`GET` http://service.prerender.io/https://facebook.com
+`GET` http://service.prerender.io/https://www.facebook.com/
 
 First time: Overall Elapsed:	00:00:03.3174661
 
