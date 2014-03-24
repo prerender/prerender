@@ -11,7 +11,6 @@
     "laxcomma": true,
     "newcap": true,
     "noarg": true,
-    "nonbsp": false,
     "noempty": true,
     "nonew": false,
     "plusplus": false,
