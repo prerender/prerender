@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var prerender = require('./lib')
 
 var server = prerender({
