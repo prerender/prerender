@@ -9,10 +9,12 @@ var server = prerender({
     	"--disk-cache=true",
     	"--max-disk-cache-size=1048576"
     ],
-    followRedirect: true
+    followRedirect: true,
+    waitAfterLastRequest: 2000
 });
 
 server.use(prerender.basicAuth());
 server.use(require('./lib/plugins/override-default-user-agent'));
+server.use(prerender.removeScriptTags());
 
 server.start();
