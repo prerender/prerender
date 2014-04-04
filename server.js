@@ -10,7 +10,8 @@ var server = prerender({
     	"--max-disk-cache-size=1048576"
     ],
     followRedirect: true,
-    waitAfterLastRequest: 2000
+    waitAfterLastRequest: 2000,
+    jsTimeout: 20000
 });
 
 server.use(prerender.basicAuth());
