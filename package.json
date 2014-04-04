@@ -3,6 +3,6 @@
   "name": "prerender",
   "private": true,
   "dependencies": {
-    "prerender": "~3.3.0"
+    "prerender": "~3.3.1"
   }
 }
