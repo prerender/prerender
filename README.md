@@ -116,6 +116,23 @@ Each plugin can implement any of the plugin methods:
 
 ## Available plugins
 
+### basicAuth
+
+If you want to only allow access to your Prerender server from authorized parties, enable the basic auth plugin.
+
+You will need to add the `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` environment variables.
+```
+export BASIC_AUTH_USERNAME=prerender
+export BASIC_AUTH_PASSWORD=test
+```
+
+Then make sure to pass the basic authentication headers (password base64 encoded).
+
+```
+curl -u prerender:wrong http://localhost:1337/http://example.com -> 401
+curl -u prerender:test http://localhost:1337/http://example.com -> 200
+```
+
 ### removeScriptTags
 
 We remove script tags because we don't want any framework specific routing/rendering to happen on the rendered HTML once it's executed by the crawler. The crawlers may not execute javascript, but we'd rather be safe than have something get screwed up.
