@@ -6,6 +6,7 @@ var server = prerender({
     followRedirect: true
 });
 
+server.use(prerender.basicAuth());
 server.use(require('./lib/plugins/override-default-user-agent'));
 
 server.start();

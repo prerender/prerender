@@ -1,7 +1,12 @@
 Prerender Service
 =========================== 
 
-This is the customised branch of prerender for TrackIF.
+This is the customized branch of prerender for TrackIF.
+
+basic auth is turned on, so don't forget to set:
+
+export BASIC_AUTH_USERNAME=[username]
+export BASIC_AUTH_PASSWORD=[password]
 
 custom plugins:
 
