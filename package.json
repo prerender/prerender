@@ -16,5 +16,6 @@
   },
   "bin": {
     "prerender": "server.js"
-  }
+  },
+  "main": "server.js"
 }
