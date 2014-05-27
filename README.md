@@ -1,11 +1,11 @@
 Prerender Service [![Stories in Ready](https://badge.waffle.io/prerender/prerender.png?label=ready&title=Ready)](https://waffle.io/prerender/prerender)
-=========================== 
+===========================
 
 Google, Facebook, Twitter, Yahoo, and Bing are constantly trying to view your website... but they don't execute javascript. That's why we built Prerender. Prerender is perfect for AngularJS SEO, BackboneJS SEO, EmberJS SEO, and any other javascript framework.
 
 Behind the scenes, Prerender is a node server from [prerender.io](http://prerender.io) that uses phantomjs to create static HTML out of a javascript page. We host this as a service at [prerender.io](http://prerender.io) but we also open sourced it because we believe basic SEO is a right, not a privilege!
 
-It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Get started in two lines of code using [Rails](https://github.com/prerender/prerender_rails) or [Node](https://github.com/prerender/prerender-node). 
+It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Get started in two lines of code using [Rails](https://github.com/prerender/prerender_rails) or [Node](https://github.com/prerender/prerender-node).
 
 Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend you use. It's easy:
 - Just add &lt;meta name="fragment" content="!"> to the &lt;head> of all of your pages
@@ -62,9 +62,9 @@ This is a simple service that only takes a url and returns the rendered HTML (wi
 
 Note: you should proxy the request through your server (using middleware) so that any relative links to CSS/images/etc still work.
 
-`GET` http://service.prerender.io/https://google.com
+`GET` http://service.prerender.io/https://www.google.com
 
-`GET` http://service.prerender.io/https://google.com/search?q=angular
+`GET` http://service.prerender.io/https://www.google.com/search?q=angular
 
 
 ## Running locally
@@ -73,7 +73,7 @@ If you are trying to test Prerender with your website on localhost, you'll have 
 If you are running the prerender service locally. Make sure you set your middleware to point to your local Prerender server with:
 
 `export PRERENDER_SERVICE_URL=<your local url>`
-	
+
 	$ npm install
 	$ node server.js
 	// also supports heroku style invocation using foreman
