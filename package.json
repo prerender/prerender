@@ -5,14 +5,16 @@
   "version": "3.3.5",
   "repository": {
     "type": "git",
-    "url": "https://github.com/prerender/prerender"
+    "url": "https://github.com/webflow/prerender"
   },
   "dependencies": {
     "lodash": "~2.4.0",
     "cache-manager": "0.2.0",
     "aws-sdk": "~1.13.0",
     "phantom": "~0.5.7",
-    "phantomjs": "~1.9.7-1"
+    "phantomjs": "~1.9.7-1",
+    "config": "0.4.23",
+    "debug": "1.0.2"
   },
   "bin": {
     "prerender": "server.js"
