@@ -19,6 +19,6 @@
     "winston-papertrail": "0.1.4"
   },
   "bin": {
-    "prerender": "server.js"
+    "prerender": "prerender.js"
   }
 }
