@@ -10,7 +10,7 @@ module.exports = {
     }
   },
   aws: {
-    snsNotifyArn: 'arn:aws:sns:us-east-1:024376647576:prod-webflow-notifications'
+    snsNotifyArn: 'arn:aws:sns:us-east-1:024376647576:prerender'
   },
 
   phantom_cluster_num_workers: 2,
