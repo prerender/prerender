@@ -18,7 +18,7 @@ server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
 server.use(prerender.s3HtmlCache());
 
-if (config.logger.aws) {
+if (config.aws) {
   server.use(prerender.snsNotify());
 }
 
