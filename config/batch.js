@@ -3,7 +3,7 @@ module.exports = {
 
   logger: {
     console: true,
-    path: 'log/production.log',
+    path: 'log/prerender.log',
     papertrail: {
       host: 'logs.papertrailapp.com',
       port: 50175
