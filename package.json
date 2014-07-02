@@ -14,7 +14,9 @@
     "phantom": "~0.5.7",
     "phantomjs": "~1.9.7-1",
     "config": "0.4.23",
-    "debug": "1.0.2"
+    "debug": "1.0.2",
+    "winston": "0.7.3",
+    "winston-papertrail": "0.1.4"
   },
   "bin": {
     "prerender": "server.js"

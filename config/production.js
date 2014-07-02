@@ -1,13 +1,16 @@
 module.exports = {
-  port: 3030,
+  port: 4000,
 
   logger: {
     console: true,
-    path: 'log/development.log',
+    path: 'log/production.log',
+    papertrail: {
+      host: 'logs.papertrailapp.com',
+      port: 50175
+    }
   },
   aws: {
-    snsNotifyArn: 'arn:aws:sns:us-east-1:024376647576:dev-webflow-notifications',
-    snsErrorsArn: 'arn:aws:sns:us-east-1:024376647576:dev-webflow-errors'
+    snsNotifyArn: 'arn:aws:sns:us-east-1:024376647576:prod-webflow-notifications'
   },
 
   phantom_cluster_num_workers: 2,
@@ -25,6 +28,6 @@ module.exports = {
   awsAccessKey: process.env.AWS_ACCESS_KEY,
   awsSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
 
-  s3Bucket: 'webflow-prerender-dev',
+  s3Bucket: 'webflow-prerender-prod',
   s3_prefix_key: 'prerender'
 };
