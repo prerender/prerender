@@ -17,8 +17,5 @@
     "debug": "1.0.2",
     "winston": "0.7.3",
     "winston-papertrail": "0.1.4"
-  },
-  "bin": {
-    "prerender": "prerender.js"
   }
 }
