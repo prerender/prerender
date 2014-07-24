@@ -5,7 +5,9 @@
 
 PID=`forever list | grep prerender.js | awk '{print $7}'`
 if [ "$PID" != "" ]; then
-  echo "Restarting prerender.js"
+  echo "Killing all phantom processes..."
+  pkill phantom
+  echo "Restarting prerender.js..."
   forever restart prerender.js
 else
   if [ "$NODE_ENV" == "development" ]; then
