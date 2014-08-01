@@ -21,7 +21,7 @@ module.exports = {
   resource_download_timeout: 10000,
   wait_after_last_request: 200,
   js_check_timeout: 50,
-  js_timeout: 10000,
+  js_timeout: 15000,
   evaluate_javascript_check_timeout: 1000,
   follow_redirect: true,
 
