@@ -18,10 +18,10 @@ server.use(prerender.logger());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
 
-if (process.env.NODE_ENV !== 'development') {
-  logger.info('Setting up s3HtmlCache'.green);
-  server.use(prerender.s3HtmlCache());
-}
+// if (process.env.NODE_ENV !== 'development') {
+//   logger.info('Setting up s3HtmlCache'.green);
+//   server.use(prerender.s3HtmlCache());
+// }
 
 if (config.aws) {
   server.use(prerender.snsNotify());
