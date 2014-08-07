@@ -15,7 +15,7 @@ module.exports = {
   phantom_cluster_base_port: 12300,
   phantom_cluster_message_timeout: 1000,
   page_done_check_timeout: 100,
-  resource_download_timeout: 10000,
+  resource_download_timeout: 15000,
   wait_after_last_request: 1000,
   js_check_timeout: 50,
   js_timeout: 15000,

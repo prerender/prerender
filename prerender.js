@@ -17,7 +17,11 @@ server.use(prerender.blacklist());
 server.use(prerender.logger());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
-// server.use(prerender.s3HtmlCache());
+
+if (process.env.NODE_ENV !== 'development') {
+  logger.info('Setting up s3HtmlCache'.green);
+  server.use(prerender.s3HtmlCache());
+}
 
 if (config.aws) {
   server.use(prerender.snsNotify());
@@ -26,6 +30,7 @@ if (config.aws) {
 server.start();
 
 process.on('uncaughtException', function (err) {
+  console.log('uncaughtException: ', err);
   logger.error(err);
   logger.error(err.stack);
   process.exit(1);
