@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var prerender = require('./lib')
+var prerender = require('./lib');
 
 var server = prerender({
     workers: process.env.PHANTOM_CLUSTER_NUM_WORKERS,
