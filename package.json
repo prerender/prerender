@@ -11,8 +11,8 @@
     "aws-sdk": "~1.13.0",
     "cache-manager": "0.2.0",
     "lodash": "~2.4.0",
-    "phantom": "~0.5.7",
-    "phantomjs": "~1.9.7-1"
+    "phantom": "git+https://github.com/thoop/phantomjs-node.git#86ab572f9fc5c91a52733b8ece372463fdabeea3",
+    "phantomjs": "git+https://github.com/thoop/phantomjs.git#53bb03b027ace3fed3b387b87b4bdc2b8ad1c406"
   },
   "bin": {
     "prerender": "server.js"
