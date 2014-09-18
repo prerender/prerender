@@ -12,7 +12,8 @@
     "cache-manager": "0.2.0",
     "lodash": "~2.4.0",
     "phantom": "~0.5.7",
-    "phantomjs": "~1.9.7-1"
+    "phantomjs": "~1.9.7-1",
+    "tree-kill": "0.0.6"
   },
   "bin": {
     "prerender": "server.js"
