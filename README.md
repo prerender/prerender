@@ -199,7 +199,7 @@ prefixed. This is useful if you want to organize the snapshots in the same bucke
 
 #### Region support
 
-By default, s3HtmlCache works with US regions, if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
+By default, s3HtmlCache works with the US Standard region (East), if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
 
 ```
 $ export AWS_REGION=<region name>
