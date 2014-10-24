@@ -83,6 +83,7 @@ If you are running the prerender service locally. Make sure you set your middlew
 ## Deploying your own on heroku
 
 	$ git clone https://github.com/prerender/prerender.git
+	$ cd prerender
 	$ heroku create
 	$ git push heroku master
 
@@ -108,7 +109,7 @@ Each plugin can implement any of the plugin methods:
 
 ####`beforePhantomRequest(req, res, next)`
 
-####`onPhantomPageCreate(req, res, next)`
+####`onPhantomPageCreate(phantom, req, res, next)`
 
 ####`afterPhantomRequest(req, res, next)`
 
