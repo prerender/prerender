@@ -109,7 +109,7 @@ Each plugin can implement any of the plugin methods:
 
 ####`beforePhantomRequest(req, res, next)`
 
-####`onPhantomPageCreate(req, res, next)`
+####`onPhantomPageCreate(phantom, req, res, next)`
 
 ####`afterPhantomRequest(req, res, next)`
 
