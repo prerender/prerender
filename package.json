@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "lodash": "~2.4.0",
+    "underscore.string": "2.3.1",
     "cache-manager": "0.2.0",
     "aws-sdk": "~1.13.0",
     "phantom": "~0.5.7",
