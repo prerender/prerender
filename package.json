@@ -13,7 +13,7 @@
     "cache-manager": "0.2.0",
     "aws-sdk": "~1.13.0",
     "phantom": "~0.5.7",
-    "phantomjs": "~1.9.7-1",
+    "phantomjs": "1.9.12",
     "config": "0.4.23",
     "debug": "1.0.2",
     "winston": "0.7.3",
