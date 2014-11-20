@@ -24,6 +24,7 @@ module.exports = {
   js_timeout: 15000,
   evaluate_javascript_check_timeout: 2000,
   follow_redirect: true,
+  kill_between_renders: true,
 
   awsAccessKey: process.env.AWS_ACCESS_KEY,
   awsSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
