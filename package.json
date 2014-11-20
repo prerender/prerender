@@ -12,7 +12,7 @@
     "underscore.string": "2.3.1",
     "cache-manager": "0.2.0",
     "aws-sdk": "~1.13.0",
-    "phantom": "~0.7.0",
+    "phantom": "~0.5.7",
     "phantomjs": "1.9.12",
     "config": "0.4.23",
     "debug": "1.0.2",
