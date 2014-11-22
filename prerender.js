@@ -17,6 +17,7 @@ server.use(prerender.blacklist());
 server.use(prerender.logger());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
+server.use(prerender.removeIframes());
 
 if (process.env.NODE_ENV !== 'development') {
   logger.info('Setting up s3HtmlCache'.green);
