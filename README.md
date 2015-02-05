@@ -40,6 +40,7 @@ This is a list of middleware available to use with the prerender service:
 ###### PHP
 * [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
 * [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
+* [Laravel Prerender](https://github.com/JeroenNoten/Laravel-Prerender) (Laravel)
 
 ###### Java
 * [prerender-java](https://github.com/greengerong/prerender-java)
@@ -199,7 +200,7 @@ prefixed. This is useful if you want to organize the snapshots in the same bucke
 
 #### Region support
 
-By default, s3HtmlCache works with US regions, if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
+By default, s3HtmlCache works with the US Standard region (East), if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
 
 ```
 $ export AWS_REGION=<region name>
