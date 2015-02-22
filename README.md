@@ -12,7 +12,7 @@ Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend 
 - If you use hash urls (#), change them to the hash-bang (#!)
 - That's it! Perfect SEO on javascript pages.
 
-Prerender includes lots of plugins, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).  
+Prerender includes lots of plugins, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
 Prerender also starts multiple phantomjs processes to maximize throughput.
 
 
@@ -92,8 +92,8 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 See [prerender.io/server](https://prerender.io/server) to see how to customize the server.
 
-You can clone this repo and run `server.js`  
-OR  
+You can clone this repo and run `server.js`
+OR
 use `npm install prerender --save` to create an express-like server with custom plugins
 
 ## Plugins
@@ -237,6 +237,11 @@ Caches pages in a MongoDB database. Available at [prerender-mongodb-cache](https
 ### memjsCache
 
 Caches pages in a memjs(memcache) service. Available at [prerender-memjs-cache](https://github.com/lammertw/prerender-memjs-cache) by [@lammertw](https://github.com/lammertw)
+
+
+### levelCache
+
+Caches pages in a levelDB database. Available at [prerender-level-cache](https://github.com/maxlath/prerender-level-cache) by [@maxlath](https://github.com/maxlath)
 
 
 ## License
