@@ -30,5 +30,6 @@ module.exports = {
   awsSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
 
   s3Bucket: 'webflow-prerender-prod',
-  s3_prefix_key: 'prerender'
+  s3_prefix_key: 'prerender',
+  s3Ttl: (Date.now() + 86400000 / 2) / 1000 // 12 hours
 };
