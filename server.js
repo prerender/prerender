@@ -8,14 +8,14 @@ var server = prerender({
     messageTimeout: process.env.PHANTOM_CLUSTER_MESSAGE_TIMEOUT
 });
 
+// basicAuth whitelist blacklist logger removeScriptTags httpHeaders inMemoryHtmlCache s3HtmlCache
+var plugins = process.env.PRERENDER_PLUGINS || 'blacklist,removeScriptTags,httpHeaders';
+console.log('Plugins:', plugins);
 
-// server.use(prerender.basicAuth());
-// server.use(prerender.whitelist());
-server.use(prerender.blacklist());
-// server.use(prerender.logger());
-server.use(prerender.removeScriptTags());
-server.use(prerender.httpHeaders());
-// server.use(prerender.inMemoryHtmlCache());
-// server.use(prerender.s3HtmlCache());
+plugins.split(/[, ]+/).forEach(function(plugin) {
+  if (plugin && prerender[plugin]) {
+    server.use(prerender[plugin]());
+  }
+});
 
 server.start();

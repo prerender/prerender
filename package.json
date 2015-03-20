@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/prerender/prerender"
   },
+  "engines" : {
+    "node" : ">=0.6.0"
+  },
   "dependencies": {
     "aws-sdk": "^2.1.8",
     "cache-manager": "^0.16.0",
