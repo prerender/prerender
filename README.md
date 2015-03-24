@@ -198,7 +198,8 @@ so that you don't need to export your AWS credentials.
 > You can also export the S3_PREFIX_KEY variable so that the key (which is by default the complete requested URL) is
 prefixed. This is useful if you want to organize the snapshots in the same bucket.
 
-#### Region support
+#### Region 
+
 
 By default, s3HtmlCache works with the US Standard region (East), if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
 
@@ -214,7 +215,9 @@ $ export AWS_REGION=eu-west-1
 
 ### inMemoryHtmlCache
 
-The default is an in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
+*Note* The in memory cache is per process so if you have multiple Prerender workers then they do not share a cache. For higher traffic websites, use a common cache like redis.
+
+An in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
 
 For example, with the request:
 
