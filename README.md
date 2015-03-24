@@ -12,7 +12,7 @@ Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend 
 - If you use hash urls (#), change them to the hash-bang (#!)
 - That's it! Perfect SEO on javascript pages.
 
-Prerender includes lots of plugins, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).  
+Prerender includes lots of plugins, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
 Prerender also starts multiple phantomjs processes to maximize throughput.
 
 
@@ -44,6 +44,9 @@ This is a list of middleware available to use with the prerender service:
 
 ###### Java
 * [prerender-java](https://github.com/greengerong/prerender-java)
+
+###### Go
+* [prerender-go](https://github.com/tampajohn/prerender)
 
 ###### Grails
 * [grails-prerender](https://github.com/tuler/grails-prerender)
@@ -92,8 +95,8 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 See [prerender.io/server](https://prerender.io/server) to see how to customize the server.
 
-You can clone this repo and run `server.js`  
-OR  
+You can clone this repo and run `server.js`
+OR
 use `npm install prerender --save` to create an express-like server with custom plugins
 
 ## Plugins
@@ -198,7 +201,8 @@ so that you don't need to export your AWS credentials.
 > You can also export the S3_PREFIX_KEY variable so that the key (which is by default the complete requested URL) is
 prefixed. This is useful if you want to organize the snapshots in the same bucket.
 
-#### Region support
+#### Region 
+
 
 By default, s3HtmlCache works with the US Standard region (East), if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
 
@@ -214,7 +218,9 @@ $ export AWS_REGION=eu-west-1
 
 ### inMemoryHtmlCache
 
-The default is an in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
+*Note* The in memory cache is per process so if you have multiple Prerender workers then they do not share a cache. For higher traffic websites, use a common cache like redis.
+
+An in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
 
 For example, with the request:
 
@@ -237,6 +243,11 @@ Caches pages in a MongoDB database. Available at [prerender-mongodb-cache](https
 ### memjsCache
 
 Caches pages in a memjs(memcache) service. Available at [prerender-memjs-cache](https://github.com/lammertw/prerender-memjs-cache) by [@lammertw](https://github.com/lammertw)
+
+
+### levelCache
+
+Caches pages in a levelDB database. Available at [prerender-level-cache](https://github.com/maxlath/prerender-level-cache) by [@maxlath](https://github.com/maxlath)
 
 
 ## License
