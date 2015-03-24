@@ -45,6 +45,9 @@ This is a list of middleware available to use with the prerender service:
 ###### Java
 * [prerender-java](https://github.com/greengerong/prerender-java)
 
+###### Go
+* [prerender-go](https://github.com/tampajohn/prerender)
+
 ###### Grails
 * [grails-prerender](https://github.com/tuler/grails-prerender)
 
