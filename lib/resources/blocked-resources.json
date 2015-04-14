@@ -9,7 +9,7 @@
 	"js-agent.newrelic.com",
 	"api.segment.io",
 	"woopra.com",
-	".ttf",
+	"\\.ttf",
 	"static.olark.com",
 	"static.getclicky.com",
 	"fast.fonts.com",
@@ -19,5 +19,5 @@
 	"pagead2.googlesyndication.com",
 	"fullstory.com/rec",
 	"navilytics.com/nls_ajax.php",
-	".eot"
+	"\\.eot"
 ]
