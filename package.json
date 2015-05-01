@@ -12,7 +12,7 @@
     "cache-manager": "^0.16.0",
     "lodash": "^3.1.0",
     "phantom": "^0.7.2",
-    "phantomjs": "^1.9.15",
+    "phantomjs": "git+https://github.com/thoop/phantomjs.git#14387f2fe27b0bbc2df097af1c0cb53876cd70a2",
     "tree-kill": "0.0.6"
   },
   "bin": {
