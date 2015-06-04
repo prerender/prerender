@@ -20,5 +20,6 @@
 	"fullstory.com/rec",
 	"navilytics.com/nls_ajax.php",
 	"\\.eot",
-	"log.optimizely.com/event"
+	"log.optimizely.com/event",
+	"\\.otf"
 ]
