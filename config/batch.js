@@ -6,7 +6,8 @@ module.exports = {
     path: 'log/prerender.log',
     papertrail: {
       host: 'logs.papertrailapp.com',
-      port: 50175
+      port: 50175,
+      program: 'prerender'
     }
   },
   aws: {
