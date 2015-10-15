@@ -249,6 +249,10 @@ Caches pages in a memjs(memcache) service. Available at [prerender-memjs-cache](
 
 Caches pages in a levelDB database. Available at [prerender-level-cache](https://github.com/maxlath/prerender-level-cache) by [@maxlath](https://github.com/maxlath)
 
+### accessLog
+
+Create access log file for prerendered requests. Available at [prerender-access-log](https://github.com/unDemian/prerender-access-log) by [@unDemian](https://github.com/unDemian)
+
 
 ## License
 
