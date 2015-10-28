@@ -5,17 +5,14 @@ MAINTAINER Recast.AI <hello@recast.ai>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Add and update Debian Sources
-RUN echo "deb http://httpredir.debian.org/debian jessie main" > /etc/apt/sources.list
-RUN echo "deb-src http://httpredir.debian.org/debian jessie main" >> /etc/apt/sources.list
+RUN echo "deb http://httpredir.debian.org/debian jessie main" > /etc/apt/sources.list && \
+echo "deb-src http://httpredir.debian.org/debian jessie main" >> /etc/apt/sources.list && \
+echo "deb http://httpredir.debian.org/debian jessie-updates main" >> /etc/apt/sources.list && \
+echo "deb-src http://httpredir.debian.org/debian jessie-updates main" >> /etc/apt/sources.list && \
+echo "deb http://security.debian.org/ jessie/updates main" >> /etc/apt/sources.list && \
+echo "deb-src http://security.debian.org/ jessie/updates main" >> /etc/apt/sources.list
 
-RUN echo "deb http://httpredir.debian.org/debian jessie-updates main" >> /etc/apt/sources.list
-RUN echo "deb-src http://httpredir.debian.org/debian jessie-updates main" >> /etc/apt/sources.list
-
-RUN echo "deb http://security.debian.org/ jessie/updates main" >> /etc/apt/sources.list
-RUN echo "deb-src http://security.debian.org/ jessie/updates main" >> /etc/apt/sources.list
-
-RUN apt-get -y update
-RUN apt-get -y upgrade
+RUN apt-get -y update && apt-get -y upgrade
 
 # Install softs
 RUN apt-get -y install curl build-essential g++ flex bison gperf ruby perl \
@@ -27,7 +24,9 @@ RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get install -y nodejs
 
 WORKDIR /app
-RUN git clone https://github.com/prerender/prerender /app
+ADD package.json /app/
+# If you want a fully autonomous docker, uncomment and comment line above
+#RUN git clone https://github.com/prerender/prerender /app
 RUN npm install
 ADD . /app
 
