@@ -20,14 +20,14 @@ RUN apt-get -y upgrade
 # Install softs
 RUN apt-get -y install curl build-essential g++ flex bison gperf ruby perl \
   libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
-  libpng-dev libjpeg-dev python libx11-dev libxext-dev
+  libpng-dev libjpeg-dev python libx11-dev libxext-dev git
 
 # Install NodeJs
 RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get install -y nodejs
 
 WORKDIR /app
-ADD package.json /app/
+RUN git clone https://github.com/prerender/prerender /app
 RUN npm install
 ADD . /app
 
