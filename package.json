@@ -16,7 +16,8 @@
     "lodash": "^3.1.0",
     "phantom": "^0.7.2",
     "phantomjs": "^1.9.15",
-    "tree-kill": "0.0.6"
+    "tree-kill": "0.0.6",
+    "runsync": "0.1.8"
   },
   "bin": {
     "prerender": "server.js"
