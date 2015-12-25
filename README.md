@@ -144,6 +144,8 @@ We remove script tags because we don't want any framework specific routing/rende
 
 For example, if you rendered the HTML of an angular page but left the angular scripts in there, your browser would try to execute the angular routing and rendering on a page that no longer has any angular bindings.
 
+This plugin implements the `beforeSend` funtion, therefore cached HTML pages still contain scripts tags until they get served.
+
 ### httpHeaders
 
 If your Javascript routing has a catch-all for things like 404's, you can tell the prerender service to serve a 404 to google instead of a 200. This way, google won't index your 404's.
