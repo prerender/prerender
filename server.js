@@ -15,7 +15,7 @@ if (phantomStdout === 'mute') {
   options.onStdout = function() {};
 } else if (phantomStdout === 'quiet') {
   options.onStdout = function(data) {
-    if (data && data.indexOf('Error:') > 0) {
+    if (data && data.indexOf !== undefined && data.indexOf('Error:') > -1) {
       return console.log('phantom stdout: ' + data);
     }
   };
