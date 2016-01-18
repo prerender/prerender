@@ -78,11 +78,14 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 `export PRERENDER_SERVICE_URL=<your local url>`
 
+        $ git clone https://github.com/prerender/prerender.git
+	$ cd prerender
 	$ npm install
 	$ node server.js
 	// also supports heroku style invocation using foreman
 	$ foreman start
 
+Prerender will now be running on http://localhost:3000. If you wanted to start a web app that ran on say, http://localhost:8000, you can now visit the URL http://localhost:300/http://localhost:8000 to see how your app would render in Prerender.
 
 ## Deploying your own on heroku
 
