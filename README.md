@@ -78,11 +78,14 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 `export PRERENDER_SERVICE_URL=<your local url>`
 
+        $ git clone https://github.com/prerender/prerender.git
+	$ cd prerender
 	$ npm install
 	$ node server.js
 	// also supports heroku style invocation using foreman
 	$ foreman start
 
+Prerender will now be running on http://localhost:3000. If you wanted to start a web app that ran on say, http://localhost:8000, you can now visit the URL http://localhost:300/http://localhost:8000 to see how your app would render in Prerender.
 
 ## Deploying your own on heroku
 
@@ -143,6 +146,8 @@ curl -u prerender:test http://localhost:1337/http://example.com -> 200
 We remove script tags because we don't want any framework specific routing/rendering to happen on the rendered HTML once it's executed by the crawler. The crawlers may not execute javascript, but we'd rather be safe than have something get screwed up.
 
 For example, if you rendered the HTML of an angular page but left the angular scripts in there, your browser would try to execute the angular routing and rendering on a page that no longer has any angular bindings.
+
+This plugin implements the `beforeSend` funtion, therefore cached HTML pages still contain scripts tags until they get served.
 
 ### httpHeaders
 
