@@ -15,6 +15,13 @@
     "phantomjs": "^1.9.15",
     "tree-kill": "0.0.6"
   },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "sinon": "~1.7.3"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
   "bin": {
     "prerender": "server.js"
   }
