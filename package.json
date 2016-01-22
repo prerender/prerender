@@ -2,7 +2,7 @@
   "author": "Prerender.io",
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "3.22.2",
+  "version": "3.22.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/prerender/prerender"
@@ -14,6 +14,13 @@
     "phantom": "^0.7.2",
     "phantomjs": "git+https://github.com/thoop/phantomjs.git#14387f2fe27b0bbc2df097af1c0cb53876cd70a2",
     "tree-kill": "0.0.6"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "sinon": "~1.7.3"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
   },
   "bin": {
     "prerender": "server.js"
