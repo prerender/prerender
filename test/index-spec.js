@@ -91,12 +91,20 @@ describe ('Prerender', function(){
 
 
     it('should encode # correctly in URLs that do not use the #!', function(){
-      var req = { url: 'http://www.example.com/productNumber=123#456'};
+      var req = { url: 'http://www.example.com/productNumber=123%23456?_escaped_fragment_='};
 
       var url = util.getUrl(req);
 
       assert.equal(url, 'http://www.example.com/productNumber=123%23456');
 
+    });
+
+    it('should not encode non-english characters', function() {
+      var req = { url: 'http://www.example.com/كاليفورنيا?_escaped_fragment_='};
+
+      var url = util.getUrl(req);
+
+      assert.equal(url, 'http://www.example.com/كاليفورنيا');
     });
   });
 });
