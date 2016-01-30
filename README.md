@@ -78,7 +78,7 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 `export PRERENDER_SERVICE_URL=<your local url>`
 
-        $ git clone https://github.com/prerender/prerender.git
+	$ git clone https://github.com/prerender/prerender.git
 	$ cd prerender
 	$ npm install
 	$ node server.js
