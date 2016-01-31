@@ -95,7 +95,7 @@ Prerender will now be running on http://localhost:3000. If you wanted to start a
 	$ git push heroku master
 	
 >If you are installing Prerender under a Windows environment and you encounter errors related to 'node-gyp', you may need to follow these additional steps:
->https://github.com/nodejs/node-gyp/wiki/Visual-Studio-2010-Setup
+>https://github.com/nodejs/node-gyp#installation
 
 #Customization
 
