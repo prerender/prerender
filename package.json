@@ -3,7 +3,7 @@
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
   "version": "3.22.5",
-  "license": "AML",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/prerender/prerender"
