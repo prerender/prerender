@@ -7,6 +7,7 @@ var server = prerender({
 });
 
 
+server.use(prerender.sendPrerenderHeader());
 // server.use(prerender.basicAuth());
 // server.use(prerender.whitelist());
 server.use(prerender.blacklist());
