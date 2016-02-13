@@ -24,5 +24,6 @@
 	"\\.otf",
 	"hn.inspectlet.com",
 	"tpc.googlesyndication.com",
-	"partner.googleadservices.com"
+	"partner.googleadservices.com",
+	"\\.woff"
 ]
