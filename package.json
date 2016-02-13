@@ -24,5 +24,8 @@
   },
   "bin": {
     "prerender": "server.js"
+  },
+  "engines": {
+    "node" : ">=0.12.9"
   }
 }
