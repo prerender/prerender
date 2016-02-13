@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.3 - 2016-02-12
+### Added plugin to send a header of X-Prerender: 1 with every request
+
 ## 4.0.2 - 2016-02-12
 #### Now using PhantomJS version 2.1
 ### Changed
