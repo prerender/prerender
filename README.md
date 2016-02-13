@@ -66,9 +66,9 @@ This is a simple service that only takes a url and returns the rendered HTML (wi
 
 Note: you should proxy the request through your server (using middleware) so that any relative links to CSS/images/etc still work.
 
-`GET` http://service.prerender.io/https://www.google.com
+`GET http://service.prerender.io/https://www.google.com`
 
-`GET` http://service.prerender.io/https://www.google.com/search?q=angular
+`GET http://service.prerender.io/https://www.google.com/search?q=angular`
 
 
 ## Running locally
@@ -96,15 +96,11 @@ Prerender will now be running on http://localhost:3000. If you wanted to start a
 
 #Customization
 
-See [prerender.io/server](https://prerender.io/server) to see how to customize the server.
-
 You can clone this repo and run `server.js`
 OR
 use `npm install prerender --save` to create an express-like server with custom plugins
 
 ## Plugins
-
-See [prerender.io/server](https://prerender.io/server) to see how to create plugins.
 
 We use a plugin system in the same way that Connect and Express use middleware. Our plugins are a little different and we don't want to confuse the prerender plugins with the [prerender middleware](#middleware), so we opted to call them "plugins".
 
@@ -229,7 +225,7 @@ An in memory cache but you can easily change it to any caching system compatible
 
 For example, with the request:
 
-`GET` http://service.prerender.io/https://www.facebook.com/
+`GET http://service.prerender.io/https://www.facebook.com/`
 
 First time: Overall Elapsed:	00:00:03.3174661
 
