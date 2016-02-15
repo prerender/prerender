@@ -125,6 +125,8 @@ Each plugin can implement any of the plugin methods:
 
 ## Available plugins
 
+You can enable the plugins in `server.js` by uncommenting the corresponding lines.
+
 ### basicAuth
 
 If you want to only allow access to your Prerender server from authorized parties, enable the basic auth plugin.
