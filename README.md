@@ -87,7 +87,7 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 Prerender will now be running on http://localhost:3000. If you wanted to start a web app that ran on say, http://localhost:8000, you can now visit the URL http://localhost:3000/http://localhost:8000 to see how your app would render in Prerender.
 
-Keep in mind you will see 504s for relative URLs because the actual domain on that request is your prerender server. This isn't really an issue because once you proxy that request through the middleware, then the domain will be your website and those requests won't be sent to the prerender server.  For instance if you want to see your relative URLS working visit http://localhost:8000?_escaped_fragment_=
+Keep in mind you will see 504s for relative URLs because the actual domain on that request is your prerender server. This isn't really an issue because once you proxy that request through the middleware, then the domain will be your website and those requests won't be sent to the prerender server.  For instance if you want to see your relative URLS working visit `http://localhost:8000?_escaped_fragment_=`
 
 ## Deploying your own on heroku
 
@@ -124,6 +124,8 @@ Each plugin can implement any of the plugin methods:
 ####`beforeSend(req, res, next)`
 
 ## Available plugins
+
+You can enable the plugins in `server.js` by uncommenting the corresponding lines.
 
 ### basicAuth
 
