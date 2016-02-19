@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.4 - 2016-02-18
+### Changed
+- added engines to package.json and fixed possible bug in checking options passed in
+- prevent weird hangup on error setting a header with a newline
+- make sure we catch any errors thrown from phridge and continue
+- kill workers (and phantomjs) on SIGTERM
+
 ## 4.0.3 - 2016-02-12
 ### Added plugin to send a header of X-Prerender: 1 with every request
 
