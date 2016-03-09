@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.6 - 2016-03-09
+### Changed
+- preserve phantom arguments when server is restarting
+- use default when phantomArguments is empty
+
 ## 4.0.5 - 2016-02-29
 ### Changed
 - prevent multiple phantomjs instances from being started with low number of iterations
