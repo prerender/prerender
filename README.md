@@ -12,7 +12,7 @@ Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend 
 - If you use hash urls (#), change them to the hash-bang (#!)
 - That's it! Perfect SEO on javascript pages.
 
-Prerender includes lots of plugins, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).  
+Prerender includes lots of plugins, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
 Prerender also starts multiple phantomjs processes to maximize throughput.
 
 
@@ -40,9 +40,13 @@ This is a list of middleware available to use with the prerender service:
 ###### PHP
 * [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
 * [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
+* [Laravel Prerender](https://github.com/JeroenNoten/Laravel-Prerender) (Laravel)
 
 ###### Java
 * [prerender-java](https://github.com/greengerong/prerender-java)
+
+###### Go
+* [prerender-go](https://github.com/tampajohn/prerender)
 
 ###### Grails
 * [grails-prerender](https://github.com/tuler/grails-prerender)
@@ -62,9 +66,9 @@ This is a simple service that only takes a url and returns the rendered HTML (wi
 
 Note: you should proxy the request through your server (using middleware) so that any relative links to CSS/images/etc still work.
 
-`GET` http://service.prerender.io/https://www.google.com
+`GET http://service.prerender.io/https://www.google.com`
 
-`GET` http://service.prerender.io/https://www.google.com/search?q=angular
+`GET http://service.prerender.io/https://www.google.com/search?q=angular`
 
 
 ## Running locally
@@ -74,11 +78,16 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 `export PRERENDER_SERVICE_URL=<your local url>`
 
+	$ git clone https://github.com/prerender/prerender.git
+	$ cd prerender
 	$ npm install
 	$ node server.js
 	// also supports heroku style invocation using foreman
 	$ foreman start
 
+Prerender will now be running on http://localhost:3000. If you wanted to start a web app that ran on say, http://localhost:8000, you can now visit the URL http://localhost:3000/http://localhost:8000 to see how your app would render in Prerender.
+
+Keep in mind you will see 504s for relative URLs because the actual domain on that request is your prerender server. This isn't really an issue because once you proxy that request through the middleware, then the domain will be your website and those requests won't be sent to the prerender server.  For instance if you want to see your relative URLS working visit `http://localhost:8000?_escaped_fragment_=`
 
 ## Deploying your own on heroku
 
@@ -86,18 +95,17 @@ If you are running the prerender service locally. Make sure you set your middlew
 	$ cd prerender
 	$ heroku create
 	$ git push heroku master
+	
+>If you are installing Prerender under a Windows environment and you encounter errors related to 'node-gyp', you may need to follow these additional steps:
+>https://github.com/nodejs/node-gyp#installation
 
 #Customization
 
-See [prerender.io/server](https://prerender.io/server) to see how to customize the server.
-
-You can clone this repo and run `server.js`  
-OR  
+You can clone this repo and run `server.js`
+OR
 use `npm install prerender --save` to create an express-like server with custom plugins
 
 ## Plugins
-
-See [prerender.io/server](https://prerender.io/server) to see how to create plugins.
 
 We use a plugin system in the same way that Connect and Express use middleware. Our plugins are a little different and we don't want to confuse the prerender plugins with the [prerender middleware](#middleware), so we opted to call them "plugins".
 
@@ -116,6 +124,8 @@ Each plugin can implement any of the plugin methods:
 ####`beforeSend(req, res, next)`
 
 ## Available plugins
+
+You can enable the plugins in `server.js` by uncommenting the corresponding lines.
 
 ### basicAuth
 
@@ -139,6 +149,8 @@ curl -u prerender:test http://localhost:1337/http://example.com -> 200
 We remove script tags because we don't want any framework specific routing/rendering to happen on the rendered HTML once it's executed by the crawler. The crawlers may not execute javascript, but we'd rather be safe than have something get screwed up.
 
 For example, if you rendered the HTML of an angular page but left the angular scripts in there, your browser would try to execute the angular routing and rendering on a page that no longer has any angular bindings.
+
+This plugin implements the `beforeSend` funtion, therefore cached HTML pages still contain scripts tags until they get served.
 
 ### httpHeaders
 
@@ -197,9 +209,10 @@ so that you don't need to export your AWS credentials.
 > You can also export the S3_PREFIX_KEY variable so that the key (which is by default the complete requested URL) is
 prefixed. This is useful if you want to organize the snapshots in the same bucket.
 
-#### Region support
+#### Region 
 
-By default, s3HtmlCache works with US regions, if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
+
+By default, s3HtmlCache works with the US Standard region (East), if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
 
 ```
 $ export AWS_REGION=<region name>
@@ -213,11 +226,13 @@ $ export AWS_REGION=eu-west-1
 
 ### inMemoryHtmlCache
 
-The default is an in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
+*Note* The in memory cache is per process so if you have multiple Prerender workers then they do not share a cache. For higher traffic websites, use a common cache like redis.
+
+An in memory cache but you can easily change it to any caching system compatible with the `cache-manager` nodejs package.
 
 For example, with the request:
 
-`GET` http://service.prerender.io/https://www.facebook.com/
+`GET http://service.prerender.io/https://www.facebook.com/`
 
 First time: Overall Elapsed:	00:00:03.3174661
 
@@ -236,6 +251,15 @@ Caches pages in a MongoDB database. Available at [prerender-mongodb-cache](https
 ### memjsCache
 
 Caches pages in a memjs(memcache) service. Available at [prerender-memjs-cache](https://github.com/lammertw/prerender-memjs-cache) by [@lammertw](https://github.com/lammertw)
+
+
+### levelCache
+
+Caches pages in a levelDB database. Available at [prerender-level-cache](https://github.com/maxlath/prerender-level-cache) by [@maxlath](https://github.com/maxlath)
+
+### accessLog
+
+Create access log file for prerendered requests. Available at [prerender-access-log](https://github.com/unDemian/prerender-access-log) by [@unDemian](https://github.com/unDemian)
 
 
 ## License

@@ -2,19 +2,30 @@
   "author": "Prerender.io",
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "3.8.0",
+  "version": "4.0.5",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/prerender/prerender"
   },
   "dependencies": {
-    "aws-sdk": "~1.13.0",
-    "cache-manager": "0.2.0",
-    "lodash": "~2.4.0",
-    "phantom": "~0.5.7",
-    "phantomjs": "~1.9.7-1"
+    "aws-sdk": "^2.1.8",
+    "cache-manager": "^0.16.0",
+    "he": "^0.5.0",
+    "lodash": "^3.1.0",
+    "phridge": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "sinon": "~1.7.3"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
   },
   "bin": {
     "prerender": "server.js"
+  },
+  "engines": {
+    "node" : ">=0.12.9"
   }
 }
