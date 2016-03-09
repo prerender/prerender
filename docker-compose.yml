@@ -1,0 +1,17 @@
+prerender:
+    build: .
+    environment:
+        CACHE_MAXSIZE: 100
+        CACHE_TTL: 60
+        REDIS_CACHE_TTL: 3600
+        REDIS_HOST: redis
+        REDIS_PORT: 6379
+        ALLOWED_DOMAINS: citypantry.com
+        PORT: 3000
+        PRERENDER_NUM_WORKERS: 1
+        PRERENDER_NUM_ITERATIONS: 40
+    env_file: .env
+    links: 
+        - "redis:redis"
+redis:
+    image: redis:3
