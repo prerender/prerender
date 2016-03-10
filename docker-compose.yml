@@ -6,12 +6,13 @@ prerender:
         REDIS_CACHE_TTL: 3600
         REDIS_HOST: redis
         REDIS_PORT: 6379
-        ALLOWED_DOMAINS: citypantry.com
+        ALLOWED_DOMAINS: citypantry.com,staging.citypantry.com
         PORT: 3000
-        PRERENDER_NUM_WORKERS: 1
-        PRERENDER_NUM_ITERATIONS: 40
+        PRERENDER_NUM_WORKERS: 2
+        PRERENDER_NUM_ITERATIONS: 30
     env_file: .env
-    links: 
+    links:
         - "redis:redis"
 redis:
     image: redis:3
+
