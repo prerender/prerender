@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.7 - 2016-03-22
+### Changed
+- S3 cache plugin was incorrectly saving non-200 status code responses to the cache
+
 ## 4.0.6 - 2016-03-09
 ### Changed
 - preserve phantom arguments when server is restarting
