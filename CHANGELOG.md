@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.8 - 2016-03-24
+### Changed
+- Fixed issue where a webpage calling window.close would cause Prerender to be unable to shutdown PhantomJS properly
+
 ## 4.0.7 - 2016-03-22
 ### Changed
 - S3 cache plugin was incorrectly saving non-200 status code responses to the cache
