@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.9 - 2016-05-08
+### Changed
+- Fixed issue where we were calling `hasOwnProperty` on a `querystring` that no longer had Object on it's prototype chain
+
 ## 4.0.8 - 2016-03-24
 ### Changed
 - Fixed issue where a webpage calling window.close would cause Prerender to be unable to shutdown PhantomJS properly
