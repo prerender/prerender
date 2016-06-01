@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.10 - 2016-06-01
+### Changed
+- Fixed issue where S3HtmlCache was calling next() before finishing saving to the cache
+
 ## 4.0.9 - 2016-05-08
 ### Changed
 - Fixed issue where we were calling `hasOwnProperty` on a `querystring` that no longer had Object on it's prototype chain
