@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+var crypto = require('crypto');
+
 var prerender = require('./lib');
 
 var server = prerender({
@@ -16,5 +18,15 @@ server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
 // server.use(prerender.inMemoryHtmlCache());
 // server.use(prerender.s3HtmlCache());
+
+server.use(require('prerender-compressed-file-cache')({
+    pathBuilder: function(key) {
+        var path = process.env.CACHE_ROOT_DIR || '/tmp/prerender';
+        var hash = crypto.createHash('sha1').update(key).digest('hex');
+        path = path + '/' + hash;
+        return path;
+    },
+    fileName: 'cache'
+}));
 
 server.start();
