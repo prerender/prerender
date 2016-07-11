@@ -11,8 +11,6 @@ prerender:
         PRERENDER_NUM_WORKERS: 2
         PRERENDER_NUM_ITERATIONS: 30
     env_file: .env
-    links:
-        - "redis:redis"
 redis:
     image: redis:3
 
