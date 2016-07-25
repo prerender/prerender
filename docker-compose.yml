@@ -10,8 +10,9 @@ prerender:
     env_file: .env
     links:
         - "redis:redis"
+    restart: always
 redis:
     extends:
         file: docker-compose-common.yml
         service: redis
-
+    restart: always
