@@ -12,7 +12,7 @@ Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend 
 - If you use hash urls (#), change them to the hash-bang (#!)
 - That's it! Perfect SEO on javascript pages.
 
-Prerender includes lots of plugins, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
+Prerender includes lots of plugins if you are running your own server, for example using Amazon S3 to [cache your prerendered HTML](#s3-html-cache).
 Prerender also starts multiple phantomjs processes to maximize throughput.
 
 
@@ -82,8 +82,6 @@ If you are running the prerender service locally. Make sure you set your middlew
 	$ cd prerender
 	$ npm install
 	$ node server.js
-	// also supports heroku style invocation using foreman
-	$ foreman start
 
 Prerender will now be running on http://localhost:3000. If you wanted to start a web app that ran on say, http://localhost:8000, you can now visit the URL http://localhost:3000/http://localhost:8000 to see how your app would render in Prerender.
 
@@ -103,7 +101,170 @@ Keep in mind you will see 504s for relative URLs because the actual domain on th
 
 You can clone this repo and run `server.js`
 OR
-use `npm install prerender --save` to create an express-like server with custom plugins
+use just include prerender in your project with `npm install prerender --save` to create an express-like server with custom plugins.
+
+
+## Options
+
+### workers
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    workers: 1
+});
+
+server.start();
+```
+
+The number of Prerender workers that you'd like to start. We suggest 1 per CPU on your machine. `Default: os.cpus().length`
+
+### iterations
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    iterations: 40
+});
+
+server.start();
+```
+
+The number of pages Prerender should render before restarting the worker. WARNING: Will restart Prerender mid-request if two requests are in flight, causing a 504 response to be sent.
+
+Shutting Prerender down reclaims memory to ensure good performance. You can also set the environment variable of `NUM_ITERATIONS` instead of passing in the `iterations` parameter. `Default: 40`
+
+### softIterations
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    softIterations: 5
+});
+
+server.start();
+```
+
+The number of pages Prerender should render before restarting the worker. This option counts the number of requests in flight and only restarts the worker if no requests are in flight. If you constantly have more than 1 request in flight, this won't restart the server.
+
+Shutting Prerender down reclaims memory to ensure good performance. You can also set the environment variable of `NUM_SOFT_ITERATIONS` instead of passing in the `softIterations` parameter. `Default: 30`
+
+### cookiesEnabled
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    cookiesEnabled: true
+});
+
+server.start();
+```
+
+If Prerender should use Cookies. You can also set the environment variable of `COOKIES_ENABLED` instead of passing in the `cookiesEnabled` parameter. `Default: false`
+
+### logRequests
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    logRequests: true
+});
+
+server.start();
+```
+
+Causes the Prerender server to print out every request made represented by a `+` and every response received represented by a `-`. Lets you analyze page load times. `Default: false`
+
+### pageDoneCheckTimeout
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    pageDoneCheckTimeout: 300
+});
+
+server.start();
+```
+
+Number of milliseconds between the interval of checking whether the page is done loading or not. You can also set the environment variable of `PAGE_DONE_CHECK_TIMEOUT` instead of passing in the `pageDoneCheckTimeout` parameter. `Default: 300`
+
+### resourceDownloadTimeout
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    resourceDownloadTimeout: 10000
+});
+
+server.start();
+```
+
+Number of milliseconds to wait while downloading the page, waiting for all pending requests/ajax calls to complete before timing out and continuing on. Time out condition does not cause an error, it just moves on to the javascript execution stage. You can also set the environment variable of `RESOURCE_DOWNLOAD_TIMEOUT` instead of passing in the `resourceDownloadTimeout` parameter. `Default: 10000`
+
+### waitAfterLastRequest
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    waitAfterLastRequest: 500
+});
+
+server.start();
+```
+
+Number of milliseconds to wait after the number of requests/ajax calls in flight reaches zero. Javascript execution begins after this in order to pull the HTML off of the page. You can also set the environment variable of `WAIT_AFTER_LAST_REQUEST` instead of passing in the `waitAfterLastRequest` parameter. `Default: 500`
+
+### jsTimeout
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    jsTimeout: 10000
+});
+
+server.start();
+```
+
+Number of milliseconds to continue trying to pull the HTML off of the page using javascript before timing out. Once the timeout is hit, Prerender returns a 200 response with the last HTML that it was able to pull off of the page. You can also set the environment variable of `JS_TIMEOUT` instead of passing in the `jsTimeout` parameter. `Default: 10000`
+
+### jsCheckTimeout
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    jsCheckTimeout: 300
+});
+
+server.start();
+```
+
+Number of milliseconds between the interval of checking whether the javascript timeout has been reached or not. You can also set the environment variable of `JS_CHECK_TIMEOUT` instead of passing in the `jsCheckTimeout` parameter. `Default: 300`
+
+### noJsExecutionTimeout
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    noJsExecutionTimeout: 3000
+});
+
+server.start();
+```
+
+Number of milliseconds to wait while not being able to execute javascript before determining that the Prerender server hasn't been able to execute javascript, usually due to a webpage not giving up control of the JS execution thread (infinite loop). You can also set the environment variable of `NO_JS_EXECUTION_TIMEOUT` instead of passing in the `noJsExecutionTimeout` parameter. `Default: 3000`
+
+### evaluateJavascriptCheckTimeout
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    evaluateJavascriptCheckTimeout: 300
+});
+
+server.start();
+```
+
+Number of milliseconds between executing the javascript on the webpage to pull off the HTML. Pulling off the HTML only happens multiple times when `window.prerenderReady` is set to false. You can also set the environment variable of `EVALUATE_JAVASCRIPT_CHECK_TIMEOUT` instead of passing in the `evaluateJavascriptCheckTimeout` parameter. `Default: 300`
 
 ## Plugins
 

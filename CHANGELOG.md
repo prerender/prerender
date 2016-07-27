@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.1.0 - 2016-07-27
+### Added
+- Added NUM_SOFT_ITERATIONS to try to kill phantomjs and reclaim memory when no requests are in flight. This should be set to a low number (1-10) so that PhantomJS can be restarted often when it isn't doing anything else. NUM_ITERATIONS should still be set to something like 40-50 to make sure to force kill PhantomJS even if a request is in flight.
+- Added clearing of memory cache to prevent PhantomJS from returning a 304
+### Changed
+- Fixed issue where prerender-status-code set to `200` was causing the page to skip being cached
+- Fixed an issue where we weren't using the correct pid when trying to force kill PhantomJS.
+- Moved clearing of memory cache and local storage to before the page loads instead of after. This will prevent edge cases that could cause a 304.
+
 ## 4.0.10 - 2016-06-01
 ### Changed
 - Fixed issue where S3HtmlCache was calling next() before finishing saving to the cache
