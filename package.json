@@ -13,7 +13,8 @@
     "cache-manager": "^0.16.0",
     "he": "^0.5.0",
     "lodash": "^3.1.0",
-    "phridge": "^2.0.0"
+    "phridge": "^2.0.0",
+    "signal-exit": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "~1.13.0",
