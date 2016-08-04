@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.2.0 - 2016-08-04
+### Added
+- Added ability for cluster master to kill last known phantomjs pid for a worker if the worker dies (preventing orphaned phantomjs instances)
+### Changed
+- Better terminating for cluster workers
+
 ## 4.1.0 - 2016-07-27
 ### Added
 - Added NUM_SOFT_ITERATIONS to try to kill phantomjs and reclaim memory when no requests are in flight. This should be set to a low number (1-10) so that PhantomJS can be restarted often when it isn't doing anything else. NUM_ITERATIONS should still be set to something like 40-50 to make sure to force kill PhantomJS even if a request is in flight.
