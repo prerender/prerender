@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.3.1 - 2016-08-25
+### Changed
+- Fixed issue where PhantomJS crashed and then disposing caused bad phantomjs state
+
 ## 4.3.0 - 2016-08-04
 ### Changed
 - Bumped all dependency versions to latest
