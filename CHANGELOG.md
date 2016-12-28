@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.4.1 - 2016-12-28
+### Changed
+- Whoops. Make sure `shouldEncodeURLBeforeBrowserFetch` defaults to true.
+
 ## 4.4.0 - 2016-12-28
 ### Added
 - Added `shouldEncodeURLBeforeBrowserFetch` to allow projects that use prerender to determine whether they want to call `encodeURI` on the URL before fetching it in PhantomJS. Useful for some URLs that might have encoded slashes in them, since encoding them further would cause incorrect behavior.
