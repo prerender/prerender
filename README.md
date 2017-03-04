@@ -76,7 +76,7 @@ If you are trying to test Prerender with your website on localhost, you'll have 
 
 If you are running the prerender service locally. Make sure you set your middleware to point to your local Prerender server with:
 
-`export PRERENDER_SERVICE_URL=<your local url>`
+`export PRERENDER_SERVICE_URL=http://localhost:3000` 
 
 	$ git clone https://github.com/prerender/prerender.git
 	$ cd prerender
