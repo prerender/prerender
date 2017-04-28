@@ -97,7 +97,7 @@ Keep in mind you will see 504s for relative URLs because the actual domain on th
 >If you are installing Prerender under a Windows environment and you encounter errors related to 'node-gyp', you may need to follow these additional steps:
 >https://github.com/nodejs/node-gyp#installation
 
-#Customization
+# Customization
 
 You can clone this repo and run `server.js`
 OR
@@ -274,15 +274,15 @@ Plugins are in the `lib/plugins` directory, and add functionality to the prerend
 
 Each plugin can implement any of the plugin methods:
 
-####`init()`
+#### `init()`
 
-####`beforePhantomRequest(req, res, next)`
+#### `beforePhantomRequest(req, res, next)`
 
-####`onPhantomPageCreate(phantom, req, res, next)`
+#### `onPhantomPageCreate(phantom, req, res, next)`
 
-####`afterPhantomRequest(req, res, next)`
+#### `afterPhantomRequest(req, res, next)`
 
-####`beforeSend(req, res, next)`
+#### `beforeSend(req, res, next)`
 
 ## Available plugins
 
