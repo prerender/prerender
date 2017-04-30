@@ -54,11 +54,11 @@ describe ('Prerender', function(){
     });
 
     it('should return the correct URL for #! URLs that are encoded with another ?', function(){
-      var req = { url: 'http://www.example.com/?_escaped_fragment_=%2Fuser%2F1%3Fparam1%3Dyes%26param2%3Dno'};
+      var req = { url: 'http://www.example.com/?param3=yes&param4=no&_escaped_fragment_=%2Fuser%2F1%3Fparam1%3Dyes%26param2%3Dno'};
 
       var url = util.getUrl(req);
 
-      assert.equal(url, 'http://www.example.com/?param1=yes&param2=no#!/user/1');
+      assert.equal(url, 'http://www.example.com/?param3=yes&param4=no#!/user/1?param1=yes&param2=no');
 
     });
 
@@ -89,6 +89,7 @@ describe ('Prerender', function(){
 
     });
 
+// http://www.example.com/#http://www.example.com/#http://www.example.com/
 
     it('should encode # correctly in URLs that do not use the #!', function(){
       var req = { url: 'http://www.example.com/productNumber=123%23456?_escaped_fragment_='};
@@ -96,6 +97,33 @@ describe ('Prerender', function(){
       var url = util.getUrl(req);
 
       assert.equal(url, 'http://www.example.com/productNumber=123%23456');
+
+    });
+
+    it('should return the correct URL for inception-al # in escaped_fragment ', function(){
+      var req = { url: 'http://www.example.com/?_escaped_fragment_=http://www.example.com/%23http://www.example.com/%23http://www.example.com/'};
+
+      var url = util.getUrl(req);
+
+      assert.equal(url, 'http://www.example.com/#!http://www.example.com/#http://www.example.com/#http://www.example.com/');
+
+    });
+
+    it('should return the correct URL for encoded #! within query strings', function(){
+      var req = { url: 'http://www.example.com/productNumber=123%23!456?_escaped_fragment_='};
+
+      var url = util.getUrl(req);
+
+      assert.equal(url, 'http://www.example.com/productNumber=123%23!456');
+
+    });
+    
+    it('should encode # correctly in URLs that use the #!', function(){
+      var req = { url: 'http://www.example.com/productNumber=123%23456?_escaped_fragment_=/user/'};
+
+      var url = util.getUrl(req);
+
+      assert.equal(url, 'http://www.example.com/productNumber=123%23456#!/user/');
 
     });
 
