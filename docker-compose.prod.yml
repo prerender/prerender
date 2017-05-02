@@ -1,8 +1,9 @@
 version: '2'
 services:
   prerender:
+    restart: always
     extends:
-      file: docker-compose-common.yml
+      file: docker-compose.common.yml
       service: prerender
     environment:
       ALLOWED_DOMAINS: citypantry.com
@@ -10,14 +11,14 @@ services:
       PRERENDER_NUM_ITERATIONS: 20
       VIRTUAL_HOST: prerender.tech.citypantry.com,prerender.citypantry.com
     links:
-      - "redis:redis"
+      - 'redis:redis'
     networks:
       - frontend_network
       - backend_network
 
   redis:
     extends:
-      file: docker-compose-common.yml
+      file: docker-compose.common.yml
       service: redis
     networks:
       - backend_network
