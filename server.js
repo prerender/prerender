@@ -14,6 +14,12 @@ server.use(prerender.blacklist());
 // server.use(prerender.logger());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
+/**
+var plugins = require('prerender-contrib');
+server.use(plugins.baseHref);
+server.use(plugins.inlineCss);
+server.use(plugins.escapedCharacter);
+/**/
 // server.use(prerender.inMemoryHtmlCache());
 // server.use(prerender.s3HtmlCache());
 
