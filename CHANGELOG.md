@@ -2,6 +2,21 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.0 - 2017-5-19
+### Added
+- Added Headless Chrome as a rendering engine!
+- Added new event types: `requestReceived`, `tabCreated`, `pageLoaded`.
+- Added new Prerender server option: `chromeLocation`
+
+### Changed
+- Removed PhantomJS and all references to it
+- Removed old event types: `beforePhantomRequest`, `onPhantomPageCreate`, `afterPhantomRequest`, `beforeSend`
+- Removed In Memory Cache (moved to new repo)
+- Removed S3 HTML Cache (moved to new repo)
+- Removed Prerender server options that are no longer need: `workers`, `iterations`, `softIterations`, `cookiesEnabled`, `pageDoneCheckTimeout`, `resourceDownloadTimeout`, `jsTimeout`, `noJsExecutionTimeout`, `evaluateJavascriptCheckTimeout`
+
+See the Readme.me for in depth descriptions
+
 ## 4.4.1 - 2016-12-28
 ### Changed
 - Whoops. Make sure `shouldEncodeURLBeforeBrowserFetch` defaults to true.
