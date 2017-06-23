@@ -25,5 +25,8 @@
 	"hn.inspectlet.com",
 	"tpc.googlesyndication.com",
 	"partner.googleadservices.com",
-	"\\.woff"
+	"\\.woff",
+	"cdn.navdmp.com",
+	"usr.navdmp.com",
+	"sync.navdmp.com"
 ]
