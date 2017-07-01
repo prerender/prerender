@@ -1,0 +1,4 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'eu.gcr.io/${PROJECT_ID}/prerender:${TAG_NAME}', '.']
+images: ['eu.gcr.io/${PROJECT_ID}/prerender:${TAG_NAME}']
