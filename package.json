@@ -9,7 +9,7 @@
     "url": "https://github.com/prerender/prerender"
   },
   "dependencies": {
-    "chrome-remote-interface": "^0.22.0",
+    "chrome-remote-interface": "^0.24.2",
     "he": "^1.1.1",
     "valid-url": "^1.0.9"
   },
