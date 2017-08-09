@@ -97,6 +97,13 @@ Keep in mind you will see 504s for relative URLs because the actual domain on th
 >If you are installing Prerender under a Windows environment and you encounter errors related to 'node-gyp', you may need to follow these additional steps:
 >https://github.com/nodejs/node-gyp#installation
 
+## Running in Docker container
+
+	$ git clone https://github.com/prerender/prerender.git
+	$ cd prerender
+	$ docker build -t prerender .
+	$ docker run -d -p 3000:3000 prerender
+	
 # Customization
 
 You can clone this repo and run `server.js`
