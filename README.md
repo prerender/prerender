@@ -266,6 +266,19 @@ server.start();
 
 Number of milliseconds between executing the javascript on the webpage to pull off the HTML. Pulling off the HTML only happens multiple times when `window.prerenderReady` is set to false. You can also set the environment variable of `EVALUATE_JAVASCRIPT_CHECK_TIMEOUT` instead of passing in the `evaluateJavascriptCheckTimeout` parameter. `Default: 300`
 
+### enableHealthCheckRequests
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    enableHealthCheckRequests: true
+});
+
+server.start();
+```
+
+Enable successful responses with a status code of 200 for requests that do not include a URL to be rendered. For example `GET http://service.prerender.io/` instead of something like `GET http://service.prerender.io/https://www.google.com`. This allows for easy configuration of health check services that will not work with the default 5XX response to these requests. You can also set the environment variable of `ENABLE_HEALTH_CHECK_REQUESTS` instead of passing in the `enableHealthCheckRequests` parameter. `Default: false`
+
 ## Plugins
 
 We use a plugin system in the same way that Connect and Express use middleware. Our plugins are a little different and we don't want to confuse the prerender plugins with the [prerender middleware](#middleware), so we opted to call them "plugins".
