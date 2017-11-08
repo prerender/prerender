@@ -1,13 +1,44 @@
-Prerender Service [![Stories in Ready](https://badge.waffle.io/prerender/prerender.png?label=ready&title=Ready)](https://waffle.io/prerender/prerender)
+Prerender [![Stories in Ready](https://badge.waffle.io/prerender/prerender.png?label=ready&title=Ready)](https://waffle.io/prerender/prerender)
 ===========================
 
-Google, Facebook, Twitter, Yahoo, and Bing are constantly trying to view your website... but they don't execute javascript. That's why we built Prerender. Prerender is perfect for AngularJS SEO, BackboneJS SEO, EmberJS SEO, and any other javascript framework.
+Prerender is a node server that uses Headless Chrome to render HTML, screenshots, PDFs, and HAR files out of any web page. The Prerender server listens for an http request, takes the URL and loads it in Headless Chrome, waits for the page to finish loading by waiting for the network to be idle, and then returns your content.
 
-Behind the scenes, Prerender is a node server from [prerender.io](https://prerender.io) that uses headless Chrome to create static HTML out of a javascript page. We host this as a service at [prerender.io](https://prerender.io) but we also open sourced it because we believe basic SEO is a right, not a privilege!
+##### The quickest way to run your own prerender server:
 
-It should be used in conjunction with [these middleware libraries](#middleware) to serve the prerendered HTML to crawlers for SEO. Get started in two lines of code using [Rails](https://github.com/prerender/prerender_rails) or [Node](https://github.com/prerender/prerender-node).
+```bash
+$ npm install prerender
+```
+##### server.js
+```js
+const prerender = require('prerender');
+const server = prerender();
+server.start();
+```
+##### test it:
+```bash
+curl http://localhost:3000/render?url=https://www.example.com/
+```
 
-Prerender adheres to google's `_escaped_fragment_` proposal, which we recommend you use. It's easy:
+## Use Cases
+The Prerender server can be used in conjunction with [our Prerender middleware](#middleware) in order to serve the prerendered HTML of your javascript website to search engines (Google, Bing, etc) and social networks (Facebook, Twitter, etc) for SEO. We run the Prerender server at scale for SEO needs at [https://prerender.io/](https://prerender.io/).
+
+The Prerender server can be used on its own to crawl any web page and pull down the content for your own parsing needs. We host the Prerender server for your own crawling needs at [https://prerender.com/](https://prerender.com/).
+
+
+Prerender differs from Google Puppeteer in that Prerender is a web server that takes in URLs and loads them in parallel in a new tab in Headless Chrome. Puppeteer is an API for interacting with Chrome, but you still have to write that interaction yourself. With Prerender, you don't have to write any code to launch Chrome, load pages, wait for the page to load, or pull the content off of the page. The Prerender server handles all of that for you so you can focus on more important things!
+
+Below you will find documentation for our Prerender.io service (website SEO) and our Prerender.com service (web crawling).
+
+[Click here to jump to Prerender.io documentation](#prerenderio)
+
+[Click here to jump to Prerender.com documentation](#prerendercom)
+
+
+### <a id='prerenderio'></a>
+# Prerender.io
+###### For serving your prerendered HTML to crawlers for SEO
+
+Prerender adheres to Google's `_escaped_fragment_` proposal, which we recommend you use. It's easy:
 - Just add &lt;meta name="fragment" content="!"> to the &lt;head> of all of your pages
 - If you use hash urls (#), change them to the hash-bang (#!)
 - That's it! Perfect SEO on javascript pages.
@@ -82,14 +113,11 @@ If you are running the prerender service locally. Make sure you set your middlew
 
 Prerender will now be running on http://localhost:3000. If you wanted to start a web app that ran on say, http://localhost:8000, you can now visit the URL http://localhost:3000/http://localhost:8000 to see how your app would render in Prerender.
 
-Keep in mind you will see 504s for relative URLs because the actual domain on that request is your prerender server. This isn't really an issue because once you proxy that request through the middleware, then the domain will be your website and those requests won't be sent to the prerender server.  For instance if you want to see your relative URLS working visit `http://localhost:8000?_escaped_fragment_=`
+To test how your website will render through Prerender using the middleware, you'll want to visit the URL http://localhost:8000?_escaped_fragment_=
 
-## Deploying your own on heroku
+That should send a request to the Prerender server and display the prerendered page through your website. If you View Source of that page, you should see the HTML with all of the `<script>` tags removed.
 
-	$ git clone https://github.com/prerender/prerender.git
-	$ cd prerender
-	$ heroku create
-	$ git push heroku master
+Keep in mind you will see 504s for relative URLs when accessing http://localhost:3000/http://localhost:8000 because the actual domain on that request is your prerender server. This isn't really an issue because once you proxy that request through the middleware, then the domain will be your website and those requests won't be sent to the prerender server.  For instance if you want to see your relative URLS working visit `http://localhost:8000?_escaped_fragment_=`
 
 
 # Customization
@@ -175,18 +203,18 @@ Number of milliseconds to wait after the number of requests/ajax calls in flight
 
 `Default: 500`
 
-### followRedirect
+### followRedirects
 ```
 var prerender = require('./lib');
 
 var server = prerender({
-    followRedirect: false
+    followRedirects: false
 });
 
 server.start();
 ```
 
-Whether Chrome follows a redirect on the first request if a redirect is encountered. Normally, for SEO purposes, you do not want to follow redirects. Instead, you want the Prerender server to return the redirect to the crawlers so they can update their index. Don't set this to `true` unless you know what you are doing. You can also set the environment variable of `FOLLOW_REDIRECT` instead of passing in the `followRedirect` parameter.
+Whether Chrome follows a redirect on the first request if a redirect is encountered. Normally, for SEO purposes, you do not want to follow redirects. Instead, you want the Prerender server to return the redirect to the crawlers so they can update their index. Don't set this to `true` unless you know what you are doing. You can also set the environment variable of `FOLLOW_REDIRECTS` instead of passing in the `followRedirects` parameter.
 
 `Default: false`
 
@@ -205,6 +233,8 @@ Each plugin can implement any of the plugin methods:
 #### `tabCreated(req, res, next)`
 
 #### `pageLoaded(req, res, next)`
+
+#### `beforeSend(req, res, next)`
 
 ## Available plugins
 
@@ -275,6 +305,122 @@ Caches pages in memory. Available at [coming soon](https://github.com/prerender/
 ### s3-html-cache
 
 Caches pages in S3. Available at [coming soon](https://github.com/prerender/prerender)
+
+--------------------
+
+### <a id='prerendercom'></a>
+# Prerender.com
+###### For doing your own web crawling
+
+When running your Prerender server in the web crawling context, we have a separate "API" for the server that is more complex to let you do different things like:
+- get HTML from a web page
+- get screenshots (viewport or full screen) from a web page
+- get PDFS from a web page
+- get HAR files from a web page
+- execute your own javascript and return json along with the HTML
+
+If you make an http request to the `/render` endpoint, you can pass any of the following options. You can pass an of these options as query parameters on a GET request or as JSON properties on a POST request. We recommend using a POST request but we will display GET requests here for brevity. Click here to see [how to send the POST request](#getvspost).
+
+These examples assume you have the server running locally on port 3000 but you can also use our hosted service at [https://prerender.com/](https://prerender.com/).
+
+#### url
+
+The URL you want to load. Returns HTML by default.
+
+```
+http://localhost:3000/render?url=https://www.example.com/
+```
+
+#### renderType
+
+The type of content you want to pull off the page.
+
+```
+http://localhost:3000/render?renderType=html&url=https://www.example.com/
+```
+
+Options are `html`, `jpeg`, `png`, `pdf`, `har`.
+
+#### userAgent
+
+Send your own custom user agent when Chrome loads the page.
+
+```
+http://localhost:3000/render?userAgent=ExampleCrawlerUserAgent&url=https://www.example.com/
+```
+
+#### fullpage
+
+Whether you want your screenshot to be the entire height of the document or just the viewport.
+
+```
+http://localhost:3000/render?fullpage=true&renderType=html&url=https://www.example.com/
+```
+
+Don't include `fullpage` and we'll just screenshot the normal browser viewport. Include `fullpage=true` for a full page screenshot.
+
+#### width
+
+Screen width. Lets you emulate different screen sizes.
+
+```
+http://localhost:3000/render?width=990&url=https://www.example.com/
+```
+
+Default is `1440`.
+
+#### height
+
+Screen height. Lets you emulate different screen sizes.
+
+```
+http://localhost:3000/render?height=100&url=https://www.example.com/
+```
+
+Default is `718`.
+
+#### followRedirects
+
+By default, we don't follow redirects so you can be alerted of any changes in URLs to update your crawling data. If you want us to follow redirects instead, you can pass this parameter.
+
+```
+http://localhost:3000/render?followRedirects=true&url=https://www.example.com/
+```
+
+Default is `false`.
+
+#### javascript
+
+Execute javascript to modify the page before we snapshot your content. If you set `window.prerenderData` to an object, we will pull the object off the page and return it to you. Great for parsing extra data from a page in javascript.
+
+```
+http://localhost:3000/render?javascript=window.prerenderData=window.angular.version&url=https://www.example.com/
+```
+
+### Get vs Post
+
+You can send all options as a query parameter on a GET request or as a JSON property on a POST request. We recommend using the POST request when possible to avoid any issues with URL encoding of GET request query strings. Here's a few pseudo examples:
+
+```
+POST http://localhost:3000/render
+{
+	renderType: 'html',
+	javascript: 'window.prerenderData = window.angular.version',
+	url: 'https://www.example.com/'
+}
+```
+
+```
+POST http://localhost:3000/render
+{
+	renderType: 'jpeg',
+	fullpage: 'true',
+	url: 'https://www.example.com/'
+}
+```
+
+Check out our [full documentation](https://prerender.com/documentation)
+
 
 ## License
 
