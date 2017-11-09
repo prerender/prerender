@@ -319,7 +319,7 @@ When running your Prerender server in the web crawling context, we have a separa
 - get HAR files from a web page
 - execute your own javascript and return json along with the HTML
 
-If you make an http request to the `/render` endpoint, you can pass any of the following options. You can pass an of these options as query parameters on a GET request or as JSON properties on a POST request. We recommend using a POST request but we will display GET requests here for brevity. Click here to see [how to send the POST request](#getvspost).
+If you make an http request to the `/render` endpoint, you can pass any of the following options. You can pass any of these options as query parameters on a GET request or as JSON properties on a POST request. We recommend using a POST request but we will display GET requests here for brevity. Click here to see [how to send the POST request](#getvspost).
 
 These examples assume you have the server running locally on port 3000 but you can also use our hosted service at [https://prerender.com/](https://prerender.com/).
 
@@ -381,7 +381,7 @@ Default is `718`.
 
 #### followRedirects
 
-By default, we don't follow redirects so you can be alerted of any changes in URLs to update your crawling data. If you want us to follow redirects instead, you can pass this parameter.
+By default, we don't follow 301 redirects on the initial request so you can be alerted of any changes in URLs to update your crawling data. If you want us to follow redirects instead, you can pass this parameter.
 
 ```
 http://localhost:3000/render?followRedirects=true&url=https://www.example.com/
@@ -397,6 +397,17 @@ Execute javascript to modify the page before we snapshot your content. If you se
 http://localhost:3000/render?javascript=window.prerenderData=window.angular.version&url=https://www.example.com/
 ```
 
+When using this parameter and `window.prerenderData`, the response from Prerender will look like:
+```
+{
+	prerenderData: { example: 'data' },
+	content: '<html><body></body></html>'
+}
+```
+
+If you don't set `window.prerenderData`, the response won't be JSON. The response will just be the normal HTML.
+
+### <a id='getvspost'></a>
 ### Get vs Post
 
 You can send all options as a query parameter on a GET request or as a JSON property on a POST request. We recommend using the POST request when possible to avoid any issues with URL encoding of GET request query strings. Here's a few pseudo examples:
