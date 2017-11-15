@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.1 - 2017-11-15
+### Changed
+- Set `renderType` to `html` for non "/render" endpoint
+
 ## 5.0.0 - 2017-11-15
 ### Added
 - Added Headless Chrome as a rendering engine!
