@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.0 - 2017-12-06
+### Added
+- Added removal of `<link rel="import" src="">` tags after the page is done loading to the `removeScriptTags` plugin. Imported HTML can have script tags in it, and since it's already been rendered to the page we can safely remove it when running that plugin.
+
 ## 5.0.3 - 2017-11-29
 ### Added
 - Added `if (window.customElements) customElements.forcePolyfill = true`, `ShadyDOM = {force: true}`, and `ShadyCSS = {shimcssproperties: true}` to fix Polymer app rendering.
