@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.2.0 - 2017-12-08
+### Added
+- Added ability for the prerender server to restart Chrome due to some connection issues we've been seeing after a server is running for a few hours.
+
 ## 5.1.1 - 2017-12-08
 ### Changed
 - Chrome re-uses the original request ID on a redirect so we are saving off the fact that we saw a redirect to make sure we return a correct 301
