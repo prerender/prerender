@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.1 - 2017-12-08
+### Changed
+- Chrome re-uses the original request ID on a redirect so we are saving off the fact that we saw a redirect to make sure we return a correct 301
+- Changed dependencies from ^ to ~ to make the semver more specific
+
 ## 5.1.0 - 2017-12-06
 ### Added
 - Added removal of `<link rel="import" src="">` tags after the page is done loading to the `removeScriptTags` plugin. Imported HTML can have script tags in it, and since it's already been rendered to the page we can safely remove it when running that plugin.
