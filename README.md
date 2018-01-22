@@ -308,6 +308,10 @@ Caches pages in memory. Available at [coming soon](https://github.com/prerender/
 
 Caches pages in S3. Available at [coming soon](https://github.com/prerender/prerender)
 
+### mongo-db-cache
+
+Caches pages in MongoDB. Available at [prerender-mongodb-cache](https://github.com/MartinVandersteen/prerender-mongodb-cache)
+
 --------------------
 
 ### <a id='prerendercom'></a>
