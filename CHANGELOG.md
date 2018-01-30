@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.2.1 - 2018-01-29
+### Changed
+- Changed `request.loaderId` to `request.requestId` in `requestWillBeSent` due to issue with Chrome 64 changing loaderId format.
+
 ## 5.2.0 - 2017-12-08
 ### Added
 - Added ability for the prerender server to restart Chrome due to some connection issues we've been seeing after a server is running for a few hours.
