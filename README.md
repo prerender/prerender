@@ -302,7 +302,7 @@ You can add the blacklisted domains to the plugin itself, or use the `BLACKLISTE
 
 ### in-memory-cache
 
-Caches pages in memory. Available at [coming soon](https://github.com/prerender/prerender)
+Caches pages in memory. Available at [prerender-memory-cache](https://github.com/prerender/prerender-memory-cache)
 
 ### s3-html-cache
 
