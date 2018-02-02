@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.2.2 - 2018-02-02
+### Changed
+- Make sure we only call `Buffer.byteLength` on a string to fix an error in newer versions of Node
+
 ## 5.2.1 - 2018-01-29
 ### Changed
 - Changed `request.loaderId` to `request.requestId` in `requestWillBeSent` due to issue with Chrome 64 changing loaderId format.
