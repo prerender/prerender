@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.3.0 - 2018-03-09
+### Added
+- Added `localStorage.clear()` on a new page being loaded due to bug in BrowserContext local storage being cleared: https://bugs.chromium.org/p/chromium/issues/detail?id=754576
+
+### Changed
+- Changed `document.getElementsByTagName('html')[0].outerHTML` to `document.firstElementChild.outerHTML` when querying page `html` to improve performance.
+
 ## 5.2.2 - 2018-02-02
 ### Changed
 - Make sure we only call `Buffer.byteLength` on a string to fix an error in newer versions of Node
