@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.3.1 - 2018-03-09
+### Added
+- Added `this.isBrowserConnected = false` inside `server.restartBrowser()` so the prerender server won't try to render any new requests before the browser is actually restarted. Fixes a very small edge case at scale.
+
+
 ## 5.3.0 - 2018-03-09
 ### Added
 - Added `localStorage.clear()` on a new page being loaded due to bug in BrowserContext local storage being cleared: https://bugs.chromium.org/p/chromium/issues/detail?id=754576
