@@ -304,6 +304,10 @@ You can add the blacklisted domains to the plugin itself, or use the `BLACKLISTE
 
 Caches pages in memory. Available at [prerender-memory-cache](https://github.com/prerender/prerender-memory-cache)
 
+### leveldb cache
+
+Caches pages in a local LevelDB. Available at [prerender-level-cache](https://github.com/maxlath/prerender-level-cache)
+
 ### s3-html-cache
 
 Caches pages in S3. Available at [coming soon](https://github.com/prerender/prerender)
