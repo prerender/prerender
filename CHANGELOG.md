@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.4.0 - 2018-04-04
+### Changed
+- Added ability to turn on/off services workers.
+
+
 ## 5.3.1 - 2018-03-09
 ### Added
 - Added `this.isBrowserConnected = false` inside `server.restartBrowser()` so the prerender server won't try to render any new requests before the browser is actually restarted. Fixes a very small edge case at scale.
