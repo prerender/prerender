@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.4.1 - 2018-04-05
+### Changed
+- For checking if a URL returns a redirect, we were checking to see if the request returning the redirect URL matched which failed in some cases where the encoding of the URL was different in the request. That code now checks the request ID to see if it matches the original request.
+- Service worker enable/disable can be enabled/disabled on a per tab basis by setting `req.prerender.enableServiceWorker` in the `requestReceived` event.
+
+
 ## 5.4.0 - 2018-04-04
 ### Changed
 - Added ability to turn on/off services workers.
