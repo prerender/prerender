@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.4.2 - 2018-04-05
+### Changed
+- Removed the `Page.addScriptToEvaluateOnNewDocument({source: 'localStorage.clear()'})` since it seemed to be causing an issue with Chrome in some cases. Going to look for a better fix here since our context should be clearing this already.
+
+
 ## 5.4.1 - 2018-04-05
 ### Changed
 - For checking if a URL returns a redirect, we were checking to see if the request returning the redirect URL matched which failed in some cases where the encoding of the URL was different in the request. That code now checks the request ID to see if it matches the original request.
