@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "body-parser": "~1.18.2",
-    "chrome-remote-interface": "~0.24.2",
+    "chrome-remote-interface": "~0.25.5",
     "compression": "~1.7.1",
     "express": "~4.16.2",
     "he": "~1.1.1",
