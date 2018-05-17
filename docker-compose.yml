@@ -1,0 +1,10 @@
+version: '2'
+services:
+  prerender:
+    build: .
+    working_dir: /home/prerender
+    volumes:
+      - ./:/home/prerender
+    command: bash -c "[ -d 'node_modules' ] || npm i && node server.js"
+    ports:
+      - '3000:3000'
