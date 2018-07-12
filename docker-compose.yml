@@ -6,5 +6,7 @@ services:
     volumes:
       - ./:/home/prerender
     command: bash -c "[ -d 'node_modules' ] || npm i && node server.js"
+    environment:
+      DOMAINS: "http://ucdev.mohos.eu"
     ports:
       - '3000:3000'
