@@ -7,6 +7,6 @@ services:
       - ./:/home/prerender
     command: bash -c "[ -d 'node_modules' ] || npm i && node server.js"
     environment:
-      DOMAINS: "http://ucdev.mohos.eu"
+      DOMAINS: "https://google.com"
     ports:
       - '3000:3000'
