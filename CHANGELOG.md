@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.4.4 - 2018-08-07
+### Changed
+- Updated Mocha to 5.2.0, Sinon to 6.1.4 and a few minor package numbers
+- Added package-lock.json
+
+
 ## 5.4.3 - 2018-08-07
 ### Changed
 - Removed a check for success in the response of `Target.disposeBrowserContext` to fix an issue with Chrome 68 removing that response object.
