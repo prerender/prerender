@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.4.3 - 2018-08-07
+### Changed
+- Removed a check for success in the response of `Target.disposeBrowserContext` to fix an issue with Chrome 68 removing that response object.
+
+
 ## 5.4.2 - 2018-04-05
 ### Changed
 - Removed the `Page.addScriptToEvaluateOnNewDocument({source: 'localStorage.clear()'})` since it seemed to be causing an issue with Chrome in some cases. Going to look for a better fix here since our context should be clearing this already.
