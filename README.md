@@ -306,7 +306,42 @@ Caches pages in memory. Available at [prerender-memory-cache](https://github.com
 
 ### s3-html-cache
 
-Caches pages in S3. Available at [coming soon](https://github.com/prerender/prerender)
+Caches pages in S3.
+
+A `GET` request will check S3 for a cached copy. If a cached copy is found, it will return that. Otherwise, it will make the request to your server and then persist the HTML to the S3 cache.
+
+A `POST` request will skip the S3 cache. It will make a request to your server and then persist the HTML to the S3 cache. The `POST` is meant to update the cache.
+
+You'll need to sign up with Amazon Web Services and export these 3 environment variables.
+
+```
+$ export AWS_ACCESS_KEY_ID=<aws access key>
+$ export AWS_SECRET_ACCESS_KEY=<aws secret access key>
+$ export S3_BUCKET_NAME=<bucket name>
+```
+
+Warning! Your keys should be kept private and you'll be charged for all files uploaded to S3.
+
+> If Prerender is hosted on a EC2 instance, you can also take advantage of [IAM instance roles](http://aws.typepad.com/aws/2012/06/iam-roles-for-ec2-instances-simplified-secure-access-to-aws-service-apis-from-ec2.html)
+so that you don't need to export your AWS credentials.
+
+> You can also export the S3_PREFIX_KEY variable so that the key (which is by default the complete requested URL) is
+prefixed. This is useful if you want to organize the snapshots in the same bucket.
+
+#### Region 
+
+
+By default, s3HtmlCache works with the US Standard region (East), if your bucket is localized in another region you can config it with an environment variable : `AWS_REGION`.
+
+```
+$ export AWS_REGION=<region name>
+```
+
+For example :
+
+```
+$ export AWS_REGION=eu-west-1
+```
 
 --------------------
 
