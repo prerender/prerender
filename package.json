@@ -9,6 +9,8 @@
     "url": "https://github.com/prerender/prerender"
   },
   "dependencies": {
+    "aws-sdk": "^2.4.12",
+    "cache-manager": "^2.1.2",
     "body-parser": "~1.18.3",
     "chrome-remote-interface": "~0.25.7",
     "compression": "~1.7.3",
