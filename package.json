@@ -2,23 +2,23 @@
   "author": "Prerender.io",
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "5.2.2",
+  "version": "5.4.4",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/prerender/prerender"
   },
   "dependencies": {
-    "body-parser": "~1.18.2",
-    "chrome-remote-interface": "~0.24.2",
-    "compression": "~1.7.1",
-    "express": "~4.16.2",
+    "body-parser": "~1.18.3",
+    "chrome-remote-interface": "~0.25.7",
+    "compression": "~1.7.3",
+    "express": "~4.16.3",
     "he": "~1.1.1",
     "valid-url": "~1.0.9"
   },
   "devDependencies": {
-    "mocha": "^3.4.1",
-    "sinon": "^2.2.0"
+    "mocha": "^5.2.0",
+    "sinon": "^6.1.4"
   },
   "scripts": {
     "start": "node server.js",
