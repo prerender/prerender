@@ -11,6 +11,7 @@ Looking for our PhantomJS Prerender server? [Go to our phantomjs branch](https:/
 $ npm install prerender
 ```
 ##### server.js
+
 ```js
 const prerender = require('prerender');
 const server = prerender();
@@ -19,6 +20,32 @@ server.start();
 ##### test it:
 ```bash
 curl http://localhost:3000/render?url=https://www.example.com/
+```
+To render a page programmatically:
+```js
+var local = require('./local.js');
+local({
+    url: 'https://google.com',
+    output: {
+        type: 'file',
+        path: './test.html'
+    },
+    plugins:[
+        'blacklist',
+        'whitelist',
+        'blockResources',
+        'httpHeaders',
+        'sendPrerenderHeader',
+        'basicAuth',
+        'removeAngularjs',
+        'removeScriptTags',
+        'removeStyle',
+    ],
+    chromeLocation: '/usr/bin/chromium',
+    pageLoadTimeout: 10 * 1000,
+    waitAfterLastRequest: 10 * 1000,
+    followRedirects: true
+});
 ```
 
 ## Use Cases
