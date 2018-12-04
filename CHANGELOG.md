@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.4.5 - 2018-12-04
+### Changed
+- fixed issue with creating browser tabs in a new context (to clear cookies/local storage)
+- `LOG_REQUESTS` shows console logging from the webpage being loaded
+- fixed `this.options.followRedirect` typo to now be `this.options.followRedirects`
+
 ## 5.4.4 - 2018-08-07
 ### Changed
 - Updated Mocha to 5.2.0, Sinon to 6.1.4 and a few minor package numbers
