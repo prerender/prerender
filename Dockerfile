@@ -18,6 +18,6 @@ ADD git_repo.tar $APP_PATH
 
 RUN npm install
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["node", "server.js"]
