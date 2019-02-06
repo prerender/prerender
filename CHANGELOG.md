@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.5.0 - 2019-02-06
+### Added
+- Added `domContentEventFired` so that `checkIfPageIsDoneLoading` will wait at least for `domContentEventFired` before also waiting for all network requests to finish. This should hopefully take care of any edge cases where a page is saved too early when Chrome doesn't send new network requests during the parsing of a large .js file.
+
 ## 5.4.5 - 2018-12-04
 ### Changed
 - fixed issue with creating browser tabs in a new context (to clear cookies/local storage)
