@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.5.1 - 2019-02-06
+### Changed
+- We were relying on `document.doctype` to return the full doctype string but that string changed in Chrome v72. We now parse the full doctype object directly in order to build the proper doctype and this change is backwards compatible with older Chrome versions.
+
 ## 5.5.0 - 2019-02-06
 ### Added
 - Added `domContentEventFired` so that `checkIfPageIsDoneLoading` will wait at least for `domContentEventFired` before also waiting for all network requests to finish. This should hopefully take care of any edge cases where a page is saved too early when Chrome doesn't send new network requests during the parsing of a large .js file.
