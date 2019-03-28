@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.6.0 - 2019-03-27
+### Changed
+- added configurable options for pdf printing to let you override all options necessary using `this.options.pdfOptions`
+- fixed timeouts on redirects
+- added ability to override other express options on the `.listen()` function by passing in an object now instead of just the port
+
 ## 5.5.1 - 2019-02-06
 ### Changed
 - We were relying on `document.doctype` to return the full doctype string but that string changed in Chrome v72. We now parse the full doctype object directly in order to build the proper doctype and this change is backwards compatible with older Chrome versions.
