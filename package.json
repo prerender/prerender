@@ -5,6 +5,7 @@
   "version": "5.6.0",
   "license": "MIT",
   "repository": {
+    "start": "npm run start",
     "type": "git",
     "url": "https://github.com/prerender/prerender"
   },
