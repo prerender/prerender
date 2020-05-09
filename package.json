@@ -9,20 +9,20 @@
     "url": "https://github.com/prerender/prerender"
   },
   "dependencies": {
-    "body-parser": "~1.18.3",
-    "chrome-remote-interface": "~0.25.7",
-    "compression": "~1.7.3",
-    "express": "~4.16.3",
-    "he": "~1.1.1",
-    "valid-url": "~1.0.9"
+    "body-parser": "1.18.3",
+    "chrome-remote-interface": "0.25.7",
+    "compression": "1.7.3",
+    "express": "4.16.3",
+    "he": "1.1.1",
+    "valid-url": "1.0.9"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "sinon": "^6.1.4"
+    "mocha": "5.2.0",
+    "sinon": "6.1.4"
   },
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/.bin/mocha"
+    "test": "mocha"
   },
   "engines": {
     "node": ">=6.9.0"
