@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prerender test 1</title>
+    <script>
+      function onLoad() {
+        for (let i = 0; i < 10; i++) {
+          document.body.innerHTML += `Prerender.io - ${i}\n`;
+        }
+      }
+    </script>
+  </head>
+
+  <body onload="onLoad()">
+    <h1>
+        This is a simple page with some basic JS.
+    </h1>
+
+    Prerender.io - 0
+    Prerender.io - 1
+    Prerender.io - 2
+    Prerender.io - 3
+    Prerender.io - 4
+    Prerender.io - 5
+    Prerender.io - 6
+    Prerender.io - 7
+    Prerender.io - 8
+    Prerender.io - 9
+  </body>
+</html>

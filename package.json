@@ -17,12 +17,21 @@
     "valid-url": "1.0.9"
   },
   "devDependencies": {
+    "@types/express": "4.17.6",
+    "@types/mocha": "7.0.2",
+    "@types/node": "13.13.5",
+    "@types/prettier": "^2.0.0",
+    "@types/request": "^2.48.4",
+    "assert": "2.0.0",
     "mocha": "5.2.0",
-    "sinon": "6.1.4"
+    "prettier": "^2.0.5",
+    "request": "^2.88.2",
+    "ts-node": "8.10.1",
+    "typescript": "3.8.3"
   },
   "scripts": {
     "start": "node server.js",
-    "test": "mocha"
+    "test": "mocha -r ts-node/register --timeout 7000 test/suites/**/*.ts"
   },
   "engines": {
     "node": ">=6.9.0"
