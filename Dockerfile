@@ -1,5 +1,9 @@
 FROM matchoffice/rubies:2.4.3
 
+RUN sed 's|mozilla\/AddTrust_External_Root.crt|!mozilla\/AddTrust_External_Root.crt|g' -i /etc/ca-certificates.conf
+
+RUN update-ca-certificates
+
 ENV APP_PATH /var/www/prerender/current
 
 WORKDIR $APP_PATH
