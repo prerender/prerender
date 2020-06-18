@@ -40,9 +40,9 @@ Below you will find documentation for our Prerender.io service (website SEO) and
 # Prerender.io
 ###### For serving your prerendered HTML to crawlers for SEO
 
-Prerender adheres to Google's `_escaped_fragment_` proposal, which we recommend you use. It's easy:
-- Just add &lt;meta name="fragment" content="!"> to the &lt;head> of all of your pages
-- If you use hash urls (#), change them to the hash-bang (#!)
+Prerender solves SEO by serving prerendered HTML to Google and other search engines.  It's easy:
+- Just install the appropriate middleware for your app (or check out the source code and build your own)
+- Make sure search engines have a way of discovering your pages (e.g. sitemap.xml and links from other parts of your site or from around the web)
 - That's it! Perfect SEO on javascript pages.
 
 
