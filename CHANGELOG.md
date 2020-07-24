@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## 5.7.0 - 2020-07-24
+### Changed
+- added ability to configure the chrome remote debugging port for running more than one instance of chrome on the same server
+- added automatic closing of browser alert dialogs
+- moved some code from responseReceived down to loadingFinished to help more accurately know when content is done downloading
+- removed the deletion of some CSP headers that weren't really causing any issues
+
 ## 5.6.0 - 2019-03-27
 ### Changed
 - added configurable options for pdf printing to let you override all options necessary using `this.options.pdfOptions`
