@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.8.0 - 2020-07-27
+### Added
+- added `timeSpentConnectingToBrowser`, `timeSpentOpeningTab`, `timeSpentLoadingUrl`, `timeSpentParsingPage`, `timeUntilError` to `req.prerender` to allow for debugging of certain issues with the server spending too much time in different lifecycle sections
+- added a fix to setHeader warning by splitting headers on any line returns
 
 ## 5.7.0 - 2020-07-24
 ### Changed
