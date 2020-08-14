@@ -17,14 +17,14 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "sinon": "^6.1.4"
+    "mocha": "^8.1.1",
+    "sinon": "^9.0.3"
   },
   "scripts": {
     "start": "node server.js",
     "test": "./node_modules/.bin/mocha"
   },
   "engines": {
-    "node": ">=6.9.0"
+    "node": ">=10"
   }
 }
