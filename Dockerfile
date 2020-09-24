@@ -14,6 +14,8 @@ RUN apk add --update-cache chromium \
 RUN npm install --no-package-lock
 
 EXPOSE 3000
-RUN adduser -D app
+RUN mkdir /app && \
+    adduser -D app && \
+    chown -R app /app
 USER app
 CMD ["node", "server.js"]
