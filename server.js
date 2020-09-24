@@ -1,11 +1,18 @@
-#!/usr/bin/env node
-var prerender = require('./lib');
+const prerender = require('prerender');
+const prMemoryCache = require('prerender-memory-cache');
 
-var server = prerender();
+const memCache = Number(process.env.MEMORY_CACHE) || 0;
+const server = prerender({
+    chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars', '--disable-dev-shm-usage'],
+    forwardHeaders: true,
+    chromeLocation: '/usr/bin/chromium-browser'
+});
 
-server.use(prerender.sendPrerenderHeader());
-// server.use(prerender.blockResources());
-server.use(prerender.removeScriptTags());
+server.use(prerender.blacklist());
 server.use(prerender.httpHeaders());
+server.use(prerender.removeScriptTags());
 
+if (memCache === 1) {
+    server.use(prMemoryCache);
+}
 server.start();

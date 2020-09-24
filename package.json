@@ -1,30 +1,13 @@
 {
-  "author": "Prerender.io",
-  "name": "prerender",
-  "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "5.8.0",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/prerender/prerender"
+  "name": "prerender-alpine",
+  "version": "6.1.0",
+  "description": "lightweight prerender container built on alpine linux",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "chrome-remote-interface": "^0.28.2",
-    "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "he": "^1.2.0",
-    "valid-url": "^1.0.9"
-  },
-  "devDependencies": {
-    "mocha": "^8.1.1",
-    "sinon": "^9.0.3"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "test": "./node_modules/.bin/mocha"
-  },
-  "engines": {
-    "node": ">=10"
+    "prerender": "5.6.0",
+    "prerender-memory-cache": "1.0.2"
   }
 }
