@@ -32,7 +32,7 @@
   become_user: root
   shell:
     chdir: /etc/docker_env/
-    cmd: docker run --rm --name prerender --hostname prerender.services.lokalebasen.dk -m 1024m -v /var/log/docker/prerender:/var/log -v /etc/hosts:/etc/hosts:ro -p 0.0.0.0:50032:8080 --env-file /etc/docker_env/prerender.denv -d matchoffice/prerender:latest
+    cmd: docker run --rm --name prerender --hostname prerender.services.lokalebasen.dk -m 1024m -v /var/log/docker/prerender:/var/log -v /etc/hosts:/etc/hosts:ro -p 0.0.0.0:50032:8080 --env-file /etc/docker_env/prerender.env -d matchoffice/prerender:latest
   
 
 
