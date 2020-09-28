@@ -1,0 +1,7 @@
+---
+
+- name: Deploy prerender
+  hosts: services
+  roles:
+  - deploy 
+  

@@ -1,0 +1,6 @@
+ansible_ssh_host : 10.156.0.19
+ansible_ssh_port: 22                                                                                                                                                                                                                                          
+ansible_ssh_user: jenkins
+ansible_become: yes
+ansible_become_method: sudo
+ansible_ssh_private_key_file: /var/jenkins_home/jenkins_key
