@@ -1,0 +1,6 @@
+SITE_PORT:
+    PORT_1: 50031:8080
+    PORT_2: 50032:8080
+    PORT_3: 50033:8080
+
+IMAGE: matchoffice/prerender:latest

@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  prerender_1:
+    container_name: prerender_1
+    image: {{IMAGE}}
+    ports:
+      - "{{SITE_PORT.PORT_1}}"
+    volumes:
+      - "/etc/hosts:/etc/hosts:ro"
+      - "/var/log/docker/prerender:/var/log"
+    env_file:
+      - /etc/docker_env/prerender/prerender.env
+    networks:
+      - net
+    mem_limit: 512M
+
+    prerender_2:
+    container_name: prerender_2
+    image: {{IMAGE}}
+    ports:
+      - "{{SITE_PORT.PORT_2}}"
+    volumes:
+      - "/etc/hosts:/etc/hosts:ro"
+      - "/var/log/docker/prerender:/var/log"
+    env_file:
+      - /etc/docker_env/prerender/prerender.env
+    networks:
+      - net
+    mem_limit: 512M
+
+    prerender_3:
+    container_name: prerender_3
+    image: {{IMAGE}}
+    ports:
+      - "{{SITE_PORT.PORT_2}}"
+    volumes:
+      - "/etc/hosts:/etc/hosts:ro"
+      - "/var/log/docker/prerender:/var/log"
+    env_file:
+      - /etc/docker_env/prerender/prerender.env
+    networks:
+      - net
+    mem_limit: 512M

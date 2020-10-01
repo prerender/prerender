@@ -7,7 +7,7 @@
   become: yes
   become_user: root
   file:
-    path: /etc/docker_env
+    path: /etc/docker_env/prerender
     state: directory
 
 
@@ -16,28 +16,20 @@
   become_user: root
   template: 
     src: prerender.env.j2
-    dest: /etc/docker_env/prerender.env
+    dest: /etc/docker_env/prerender/prerender.env
 
-
-- name: Stop prerender
+- name: Create docker-compose.yml from template
   become: yes
   become_user: root
-  shell:
-    chdir: /etc/docker_env/
-    cmd: docker stop prerender
+  template: 
+    src: docker-compose.env.j2
+    dest: /etc/docker_env/prerender/docker-compose.yml
 
 
 - name: Start prerender
   become: yes
   become_user: root
   shell:
-    chdir: /etc/docker_env/
-    cmd: docker run --rm --name prerender --hostname prerender.services.lokalebasen.dk -m 1024m -v /var/log/docker/prerender:/var/log -v /etc/hosts:/etc/hosts:ro -p 0.0.0.0:50032:8080 --env-file /etc/docker_env/prerender.env -d matchoffice/prerender:latest
-  
-
-
-
-
-
-      
+    chdir: /etc/docker_env/prerender
+    cmd: docker-compose up --force-recreate -d
   
