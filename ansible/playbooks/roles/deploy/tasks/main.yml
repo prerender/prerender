@@ -22,7 +22,7 @@
   become: yes
   become_user: root
   template: 
-    src: docker-compose.env.j2
+    src: docker-compose.yml.j2
     dest: /etc/docker_env/prerender/docker-compose.yml
 
 
