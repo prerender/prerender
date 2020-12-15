@@ -17,10 +17,12 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
+    "@fs/npm-publisher": "^1.1.1",
     "mocha": "^8.2.1",
     "sinon": "^9.2.2"
   },
   "scripts": {
+    "publish": "npmPublish",
     "start": "node server.js",
     "test": "./node_modules/.bin/mocha"
   },

@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "10"
+before_install:
+  - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+  - echo "${NPM_REGISTRY}:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+  - echo "@fs:registry=https:${NPM_REGISTRY}" >> ~/.npmrc
+script: npm run lint && npm run test -- --coverage
+branches:
+  only:
+    - master
+
+deploy:
+  - provider: script
+    edge: true
+    cleanup: false
+    # this needs to be npm run publish, not npm publish in order to run the publish command in package.json
+    script: npm run publish
+    on:
+      branch: master
