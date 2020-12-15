@@ -1,8 +1,8 @@
 {
   "author": "Prerender.io",
-  "name": "prerender",
-  "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "5.8.0",
+  "name": "@fs/prerender",
+  "description": "Service to prerender Javascript rendered pages for SEO, customized for FamilySearch",
+  "version": "5.8.0-fs",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "mocha": "^8.1.1",
-    "sinon": "^9.0.3"
+    "mocha": "^8.2.1",
+    "sinon": "^9.2.2"
   },
   "scripts": {
     "start": "node server.js",

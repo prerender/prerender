@@ -1,16 +1,18 @@
 Prerender
 ===========================
 
+> This is a fork of Prerender customized for FamilySearch
+
 Prerender is a node server that uses Headless Chrome to render HTML, screenshots, PDFs, and HAR files out of any web page. The Prerender server listens for an http request, takes the URL and loads it in Headless Chrome, waits for the page to finish loading by waiting for the network to be idle, and then returns your content.
 
 ##### The quickest way to run your own prerender server:
 
 ```bash
-$ npm install prerender
+$ npm install @fs/prerender
 ```
 ##### server.js
 ```js
-const prerender = require('prerender');
+const prerender = require('@fs/prerender');
 const server = prerender();
 server.start();
 ```
