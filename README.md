@@ -158,6 +158,21 @@ Causes the Prerender server to print out every request made represented by a `+`
 
 `Default: false`
 
+### captureConsoleLog
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    captureConsoleLog: true
+});
+
+server.start();
+```
+
+Prerender server will store all console logs into `pageLoadInfo.logEntries` for further analytics.
+
+`Default: false`
+
 ### pageDoneCheckInterval
 ```
 var prerender = require('./lib');
