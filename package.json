@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "chrome-remote-interface": "^0.29.0",
+    "elastic-apm-node": "^3.13.0",
     "express": "^4.17.1",
     "he": "^1.2.0",
     "prerender": "5.6.0",
