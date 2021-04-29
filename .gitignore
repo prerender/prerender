@@ -4,3 +4,4 @@ node_modules/
 .elasticbeanstalk/
 .ebextensions/
 .idea/
+.vscode/

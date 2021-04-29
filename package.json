@@ -2,7 +2,7 @@
   "author": "Prerender.io",
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "5.8.4",
+  "version": "5.9.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha ./test/**/*-spec.js"
   },
   "engines": {
     "node": ">=10"
