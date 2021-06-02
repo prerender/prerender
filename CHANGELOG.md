@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.11.1 - 2021-06-03
+### Changed
+- fix: `firstPrerenderReadyTime` should be evulated in each rendering process, not only the first rendering
+
 ## 5.11.0 - 2021-05-20
 ### Changed
 - stop rendering after `prerenderReady` set to true.
