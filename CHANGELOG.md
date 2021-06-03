@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.11.2 - 2021-06-04
+### Added
+- `prerenderReadyDelay` now can be configured via `req.prerender.prerenderReadyDelay`
+
 ## 5.11.1 - 2021-06-03
 ### Changed
 - fix: `firstPrerenderReadyTime` should be evulated in each rendering process, not only the first rendering
