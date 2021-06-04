@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.11.3 - 2021-06-04
+### Changed
+- We didn't wait some promises like `setUserAgentOverride`, `setBypassServiceWorker` and `setOverrideCertificateErrors` in the past. Under heavy load, we might send requests before these overrides are set properly.
+
 ## 5.11.2 - 2021-06-04
 ### Added
 - `prerenderReadyDelay` now can be configured via `req.prerender.prerenderReadyDelay`
