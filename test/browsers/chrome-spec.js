@@ -24,6 +24,8 @@ describe("chrome", function() {
 
       tab.Emulation = sandbox.stub();
       tab.Emulation.setDeviceMetricsOverride = sandbox.stub();
+
+      chrome.options = chrome.options || {};
     });
 
     afterEach(function() {

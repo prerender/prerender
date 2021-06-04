@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.12.0 - 2021-06-04
+### Changed
+- Upgraded `chrome-remote-interface` from `0.28.x` to `0.30.0`.
+
 ## 5.11.3 - 2021-06-04
 ### Changed
 - We didn't wait some promises like `setUserAgentOverride`, `setBypassServiceWorker` and `setOverrideCertificateErrors` in the past. Under heavy load, we might send requests before these overrides are set properly.
