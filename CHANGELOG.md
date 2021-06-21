@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.13.0 - 2021-06-21
+### Changed
+- Retry CDP websocket connection.
+
 ## 5.12.0 - 2021-06-04
 ### Changed
 - Upgraded `chrome-remote-interface` from `0.28.x` to `0.30.0`.
