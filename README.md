@@ -19,6 +19,19 @@ server.start();
 curl http://localhost:3000/render?url=https://www.example.com/
 ```
 
+##### Puppeteer backend
+Script for testing
+```
+docker run \
+  --rm \
+  -it \
+  -p 3123:3000 \
+  -e "MAX_CONCURRENT_SESSIONS=10" \
+  --name "browserless" \
+  --add-host=site.internal.prerender.io:host-gateway \
+  browserless/chrome:latest
+```
+
 ## Use Cases
 The Prerender server can be used in conjunction with [our Prerender.io middleware](#middleware) in order to serve the prerendered HTML of your javascript website to search engines (Google, Bing, etc) and social networks (Facebook, Twitter, etc) for SEO. We run the Prerender server at scale for SEO needs at [https://prerender.io/](https://prerender.io/).
 
