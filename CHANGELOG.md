@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 6.0.0 - 2021-09-XX
+### Changed
+- Major change. Until now prerender started a chrome process and accessed it
+  through the CDP protocol. This release switches to puppeteer instead of CDP.
+  It still supports launching a chrome process locally but it can also connect
+  to a serverless cluster.
+
 ## 5.15.0 - 2021-08-31
 ### Changed
 - Log initial request
