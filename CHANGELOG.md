@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   through the CDP protocol. This release switches to puppeteer instead of CDP.
   It still supports launching a chrome process locally but it can also connect
   to a serverless cluster.
+## 5.16.0 - 2021-09-21
+### Changed
+- Save errors to tab.prerender.errors
 
 ## 5.15.0 - 2021-08-31
 ### Changed
