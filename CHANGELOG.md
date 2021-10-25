@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.16.1 - 2021-10-25
+### Changed
+- Undefined page outerHTML treated as an error
+
 ## 5.16.0 - 2021-09-21
 ### Changed
 - Save errors to tab.prerender.errors
