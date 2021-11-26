@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.16.2 - 2021-11-26
+### Changed
+- Add option to skip setting `customElements.forcePolyfill = true`
+
 ## 5.16.1 - 2021-10-25
 ### Changed
 - Undefined page outerHTML treated as an error
