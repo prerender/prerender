@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.16.3 - 2021-11-29
+### Changed
+- Save if the rendering was timed out in tab.prerender.timedout
+
 ## 5.16.2 - 2021-11-26
 ### Changed
 - Add option to skip setting `customElements.forcePolyfill = true`
