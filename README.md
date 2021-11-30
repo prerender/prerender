@@ -127,12 +127,53 @@ You can clone this repo and run `server.js` OR include prerender in your project
 
 ## Options
 
+### host
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    host: '::',
+});
+
+server.start();
+```
+
+You can override the bind address for the prerender. So you can have one machine answering prerender requests for many others.
+Don't forget to macht the `PRERENDER_SERVICE_URL` on the other process.
+**Warning:** setting this to `::` or `0.0.0.0` on an internet facing machine opens your machine up for everybody and makes you an open relay.
+
+```
+export HOST=localhost
+```
+
+`Default: "localhost"`
+
+### port
+```
+var prerender = require('./lib');
+
+var server = prerender({
+    port: 3030,
+});
+
+server.start();
+```
+
+Change the port prerender binds to. Useful if you are running multiple instances on the same machine.
+Don't forget to macht the `PRERENDER_SERVICE_URL` on the other process.
+
+```
+export PORT=3000
+```
+
+`Default: null`
+
 ### chromeLocation
 ```
 var prerender = require('./lib');
 
 var server = prerender({
-    chromeLocation: '/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
+    chromeLocation: '/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary',
 });
 
 server.start();
@@ -148,7 +189,7 @@ Uses a chrome install at a certain location. Prerender does not download Chrome 
 var prerender = require('./lib');
 
 var server = prerender({
-    logRequests: true
+    logRequests: true,
 });
 
 server.start();
@@ -178,7 +219,7 @@ Prerender server will store all console logs into `pageLoadInfo.logEntries` for 
 var prerender = require('./lib');
 
 var server = prerender({
-    pageDoneCheckInterval: 1000
+    pageDoneCheckInterval: 1000,
 });
 
 server.start();
@@ -193,7 +234,7 @@ Number of milliseconds between the interval of checking whether the page is done
 var prerender = require('./lib');
 
 var server = prerender({
-    pageLoadTimeout: 20 * 1000
+    pageLoadTimeout: 20 * 1000,
 });
 
 server.start();
@@ -208,7 +249,7 @@ Maximum number of milliseconds to wait while downloading the page, waiting for a
 var prerender = require('./lib');
 
 var server = prerender({
-    waitAfterLastRequest: 500
+    waitAfterLastRequest: 500,
 });
 
 server.start();
@@ -223,7 +264,7 @@ Number of milliseconds to wait after the number of requests/ajax calls in flight
 var prerender = require('./lib');
 
 var server = prerender({
-    followRedirects: false
+    followRedirects: false,
 });
 
 server.start();
