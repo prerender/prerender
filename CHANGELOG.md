@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.16.4 - 2021-12-06
+### Changed
+- Logging if the plugin event lasts more than 10 seconds
+
 ## 5.16.3 - 2021-11-29
 ### Changed
 - Save if the rendering was timed out in tab.prerender.timedout
