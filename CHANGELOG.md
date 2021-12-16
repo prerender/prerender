@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.17.0 - 2021-12-16
+### Changed
+- Allow enabling of request and JS logging to console with the `PRERENDER_LOG_REQUESTS` environment variable
+
 ## 5.16.5 - 2021-12-08
 ### Changed
 - Fix plugin event logging after reject
