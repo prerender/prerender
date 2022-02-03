@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.18.0 - 2022-02-09
+- Fire plugin event `tabNavigated` when tab navigation is finished. Save `errorText` in `tab.prerender.navigateError`
+- Mark page done if `navigateError` exists
+
 ## 5.17.0 - 2021-12-16
 ### Changed
 - Allow enabling of request and JS logging to console with the `PRERENDER_LOG_REQUESTS` environment variable
