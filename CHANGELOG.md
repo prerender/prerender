@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.19.0 - 2022-03-23
+- Ability to parse content from the shadow DOM
+
 ## 5.18.0 - 2022-02-09
 - Fire plugin event `tabNavigated` when tab navigation is finished. Save `errorText` in `tab.prerender.navigateError`
 - Mark page done if `navigateError` exists
