@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.20.0 - 2022-05-06
+- If a request made during rendering gets a 5XX response the render process will be marked as dirty
+
 ## 5.19.0 - 2022-03-23
 - Ability to parse content from the shadow DOM
 
