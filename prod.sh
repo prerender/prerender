@@ -1,0 +1,1 @@
+zip -r build.zip Dockerrun.aws.json
