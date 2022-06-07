@@ -1,13 +1,13 @@
-const chrome = require("../../lib/browsers/chrome"),
-  sinon = require("sinon"),
-  assert = require("assert");
+const chrome = require('../../lib/browsers/chrome'),
+  sinon = require('sinon'),
+  assert = require('assert');
 
-describe("chrome", function() {
-  describe("loadUrlThenWaitForPageLoadEvent", function() {
+describe('chrome', function () {
+  describe('loadUrlThenWaitForPageLoadEvent', function () {
     let tab;
     let sandbox;
 
-    beforeEach(function() {
+    beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       tab = sandbox.stub();
@@ -28,25 +28,25 @@ describe("chrome", function() {
       chrome.options = chrome.options || {};
     });
 
-    afterEach(function() {
+    afterEach(function () {
       sandbox.restore();
     });
 
-    it("Should NOT change tabs status code", async function() {
+    it('Should NOT change tabs status code', async function () {
       const expectedStatusCode = 123;
       tab.prerender.statusCode = expectedStatusCode;
 
-      await chrome.loadUrlThenWaitForPageLoadEvent(tab, "the-url");
+      await chrome.loadUrlThenWaitForPageLoadEvent(tab, 'the-url');
 
       assert.strictEqual(tab.prerender.statusCode, expectedStatusCode);
     });
 
-    it("Should change tabs status code to the predefined value", async function() {
+    it('Should change tabs status code to the predefined value', async function () {
       const expectedStatusCode = 222;
       tab.prerender.statusCode = 111;
       tab.prerender.timeoutStatusCode = expectedStatusCode;
 
-      await chrome.loadUrlThenWaitForPageLoadEvent(tab, "the-url");
+      await chrome.loadUrlThenWaitForPageLoadEvent(tab, 'the-url');
 
       assert.strictEqual(tab.prerender.statusCode, expectedStatusCode);
     });
