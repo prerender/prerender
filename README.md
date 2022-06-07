@@ -9,6 +9,9 @@ Prerender is a node server that uses Headless Chrome to render HTML, screenshots
 ```bash
 $ docker build -t commudle/prerender:latest .
 $ docker run -d -p 8080:8080 -e CACHE_TTL=3600 commudle/prerender:latest
+
+$ docker tag commudle/prerender:latest commudle/prerender:1.0.0
+$ docker push commudle/prerender:1.0.0
 ```
 
 ## The quickest way to run your own prerender server:
