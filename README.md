@@ -20,8 +20,6 @@ $ docker tag commudle/prerender:latest commudle/prerender:latest
 $ docker push commudle/prerender:latest
 ```
 
-
-
 ## The quickest way to run your own prerender server:
 
 ##### server.js
