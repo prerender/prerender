@@ -12,7 +12,6 @@ WORKDIR /usr/src/app
 COPY package.json .
 COPY package-lock.json .
 RUN npm install
-RUN npm install prerender-memory-cache --save
 RUN npm install -g pm2
 COPY . .
 
