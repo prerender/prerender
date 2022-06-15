@@ -15,10 +15,12 @@ $ docker run -d -p 8080:8080 -e CACHE_TTL=3600 commudle/prerender:latest
 
 ```bash
 $ sh prod.sh
-
+$ docker build -t commudle/prerender:latest .
 $ docker tag commudle/prerender:latest commudle/prerender:latest
 $ docker push commudle/prerender:latest
 ```
+
+
 
 ## The quickest way to run your own prerender server:
 
