@@ -2,7 +2,14 @@ let prerender = require('./lib');
 
 let server = prerender({
   port: 8080,
-  chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars'],
+  chromeFlags: [
+    '--no-sandbox',
+    '--headless',
+    '--disable-gpu',
+    '--remote-debugging-port=9222',
+    '--hide-scrollbars',
+    '--disable-dev-shm-usage',
+  ],
   logRequests: true,
 });
 
