@@ -445,7 +445,7 @@ POST http://localhost:3000/render
 }
 ```
 
-Check out our [full documentation](https://prerender.com/documentation)
+Check out our [full documentation](https://docs.prerender.io)
 
 
 ## License
