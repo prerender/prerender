@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.20.1 - 2022-11-30
+### Changed
+- Log error if Page.stopLoading fails
+
 ## 5.20.0 - 2022-05-06
 - If a request made during rendering gets a 5XX response the render process will be marked as dirty
 
