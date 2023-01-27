@@ -1,3 +1,7 @@
+Porter and K8s are unable to run prerender as-is; chrome cannot be started outside the context of a shell. This fork of prerender makes a one-line change to enable prerender to manage chrome in K8s.
+
+See https://arcade-inc.slack.com/archives/C02K09F3ZT5/p1674741952181659
+
 Prerender
 ===========================
 
