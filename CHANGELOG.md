@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.20.2 - 2023-03-01
+- Add `x-prerender-render-id` and `x-prerender-render-at` meta tags to header
+
 ## 5.20.1 - 2022-11-30
 ### Changed
 - Log error if Page.stopLoading fails
