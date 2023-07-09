@@ -1,13 +1,18 @@
-#!/usr/bin/env node
-var prerender = require('./lib');
+module.exports = require('./lib');
 
-var server = prerender();
+function route (){
 
-server.use(prerender.sendPrerenderHeader());
-server.use(prerender.browserForceRestart());
-// server.use(prerender.blockResources());
-server.use(prerender.addMetaTags());
-server.use(prerender.removeScriptTags());
-server.use(prerender.httpHeaders());
+    const prerender = require('./lib');
+    const server = prerender();
 
-server.start();
+    server.use(prerender.sendPrerenderHeader());
+    server.use(prerender.browserForceRestart());
+    // server.use(prerender.blockResources());
+    server.use(prerender.addMetaTags());
+    server.use(prerender.removeScriptTags());
+    server.use(prerender.httpHeaders());
+
+    server.start();
+}
+
+module.exports = { route }
