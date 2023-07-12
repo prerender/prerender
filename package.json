@@ -15,7 +15,8 @@
     "express": "^4.17.1",
     "he": "^1.2.0",
     "uuid": "^8.3.2",
-    "valid-url": "^1.0.9"
+    "valid-url": "^1.0.9",
+    "prerender-memory-cache": "1.0.2"
   },
   "devDependencies": {
     "mocha": "^8.4.0",

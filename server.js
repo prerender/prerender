@@ -1,18 +1,12 @@
 module.exports = require('./lib');
 
-function route (){
+const prerender = require('./lib');
 
-    const prerender = require('./lib');
-    const server = prerender();
+const server = prerender({
+  followRedirects: true,
+  chromeLocation: '/usr/bin/google-chrome',
+  chromeFlags: [ '--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars' ],
+})
 
-    server.use(prerender.sendPrerenderHeader());
-    server.use(prerender.browserForceRestart());
-    // server.use(prerender.blockResources());
-    server.use(prerender.addMetaTags());
-    server.use(prerender.removeScriptTags());
-    server.use(prerender.httpHeaders());
-
-    server.start();
-}
-
-module.exports = { route }
+server.use(require('prerender-memory-cache'))
+server.start()

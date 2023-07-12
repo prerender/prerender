@@ -1,22 +1,92 @@
-name: Unit Tests
+name: Prerender app deployment
 
 on:
   push:
-  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x, 16.x]
-
+    env:
+      APP_NAME: prerender
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
+          node-version: '18'
+
+      - name: Set outputs
+        id: vars
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+          # Extracting thr branch and deciding the vars based on it
+          branch=$(echo ${GITHUB_REF#refs/heads/})
+
+          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
+
+          if [[ "$branch" == "master" ]]
+          then
+            PROJECT_ID=pg-production
+            ENV=prod
+          fi
+
+          echo "PROJECT_ID=$PROJECT_ID" >> $GITHUB_OUTPUT
+          echo "ENV=$ENV" >> $GITHUB_OUTPUT
+
+      - name: Google autheticate (prod-us)
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.PROD_GCP_CREDENTIALS }}
+
+      # Doing Docker authentication
+      - name: GCR authentication
+        run: gcloud auth configure-docker --quiet
+      
+      - name: Build the Docker Image
+        env:
+          IMAGE_NAME: gcr.io/pg-production/${{ env.APP_NAME }}
+        run: |
+          docker build -t $IMAGE_NAME:${{ github.run_id }} .
+
+      - name: Push the Docker Image
+        env:
+          IMAGE_NAME: gcr.io/pg-production/${{ env.APP_NAME }}
+        run: |
+          docker push $IMAGE_NAME:${{ github.run_id }}
+          
+      - name: Kubernetes-Config repo checkout
+        if: always()
+        uses: actions/checkout@v3
+        with:
+          repository: campuskudos/kubernetes-config
+          ref: ${{ steps.vars.outputs.branch }}
+          ssh-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+
+      - name: App image_tag change in helm_chart
+        run: | 
+          cd ./helm-deployments/${{ env.APP_NAME }}/
+          yq eval -i '.*.common.image.tag = "${{ github.run_id }}"' values-${{ steps.vars.outputs.branch }}-us.yaml
+
+      - name: Commit the changes in kubernetes-config repo 
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "${{ github.repository }} commit_hash: ${{ steps.vars.outputs.sha_short }} modified ${{ github.run_id }} image_tag in ${{env.APP_NAME}} helm_chart"
+          branch: ${{ steps.vars.outputs.branch }}
+          repository: .
+          status_options: '--untracked-files=no'
+          add_options: '-u'
+          push_options: '--force'
+          skip_dirty_check: true    
+          skip_fetch: true   
+    
+      # Following step will run when the job status is failure
+      - name: Slack alert on Failure
+        if: failure()
+        run: |
+          cd scripts
+          bash workflow_slack_notify.sh ${{ env.APP_NAME }} ${{ secrets.ACTION_MONITORING_SLACK }} ${{ job.status }}  ${{ github.run_id }}  \""${{ github.event.head_commit.message }}\""  ${{ github.ref }} ${{ github.event.commits[0]['author']['email'] }} TRUE
