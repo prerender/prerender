@@ -6,14 +6,12 @@ Prerender is a node server that uses Headless Chrome to render HTML, screenshots
 ##### The quickest way to run your own prerender server:
 
 ```bash
-$ npm install prerender
+$ docker run -d \
+	-p 3000:3000 \
+	-e CACHE_TTL=3600
+	hosseinkhani/prerender:latest
 ```
-##### server.js
-```js
-const prerender = require('prerender');
-const server = prerender();
-server.start();
-```
+
 ##### test it:
 ```bash
 curl http://localhost:3000/render?url=https://www.example.com/
