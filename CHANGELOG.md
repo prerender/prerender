@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.20.3 - 2024-04-17
+### Changed
+- Add `proxyServer` option to allow for a proxy server to be used by Headless Chrome
+- Add `extraChromeFlags` option to add additional Chrome flags without overriding the default flags
+
 ## 5.20.2 - 2023-03-01
 - Add `x-prerender-render-id` and `x-prerender-render-at` meta tags to header
 
