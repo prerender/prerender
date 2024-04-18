@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.20.4 - 2024-04-18
+### Changed
+- Fix `extraChromeFlags` option: `TypeError: Assignment to constant variable.`
+
 ## 5.20.3 - 2024-04-17
 ### Changed
 - Add `proxyServer` option to allow for a proxy server to be used by Headless Chrome
