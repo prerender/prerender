@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.21.0 - 2024-05-06
+### Changed
+- Make `BROWSER_TRY_RESTART_PERIOD` configurable in the server options
+
 ## 5.20.4 - 2024-04-18
 ### Changed
 - Fix `extraChromeFlags` option: `TypeError: Assignment to constant variable.`
