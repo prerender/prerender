@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.21.1 - 2024-05-06
+### Changed
+- Add `server` object to `connectedToBrowser` event
+
 ## 5.21.0 - 2024-05-06
 ### Changed
 - Make `BROWSER_TRY_RESTART_PERIOD` configurable in the server options
