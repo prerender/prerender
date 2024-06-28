@@ -2,7 +2,7 @@
   "author": "Prerender.io",
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "5.21.1",
+  "version": "5.21.2",
   "license": "MIT",
   "repository": {
     "type": "git",

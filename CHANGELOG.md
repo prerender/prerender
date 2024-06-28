@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.21.2 - 2024-06-28
+### Changed
+- Add `x-prerender-504-reason` header to response
+
 ## 5.21.1 - 2024-05-06
 ### Changed
 - Add `server` object to `connectedToBrowser` event
