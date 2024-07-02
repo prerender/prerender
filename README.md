@@ -319,7 +319,7 @@ Caches pages in memory. Available at [prerender-memory-cache](https://github.com
 
 ### s3-html-cache
 
-Caches pages in S3. Available at [coming soon](https://github.com/prerender/prerender)
+Caches pages in S3. Available at [prerender-aws-s3-cache](https://github.com/prerender/prerender-aws-s3-cache)
 
 --------------------
 
