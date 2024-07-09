@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.21.4 - 2024-07-09
+
+- Set PRERENDER_DEBUG_LOG environment variable to enable debug logging
+- Logging improvements
+
 ## 5.21.2 - 2024-06-28
 
 ### Changed
