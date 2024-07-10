@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.21.4 - 2024-07-10
+
+- Spawn chrome process as a direct descendant of root process, and not through extra shell (this is required for chrome restarts to work properly)
+
 ## 5.21.4 - 2024-07-09
 
 - Set PRERENDER_DEBUG_LOG environment variable to enable debug logging
