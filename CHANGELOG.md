@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.21.6
+
+- Added `renderErrorStatusCode` to `this.options`. We are returning with this status code in case of rendering error.
+
 ## 5.21.5 - 2024-07-10
 
 - Spawn chrome process as a direct descendant of root process, and not through extra shell (this is required for chrome restarts to work properly)
