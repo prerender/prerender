@@ -78,7 +78,7 @@ This is a list of middleware available to use with the prerender service:
 
 - [zfr-prerender](https://github.com/zf-fr/zfr-prerender) (Zend Framework 2)
 - [YuccaPrerenderBundle](https://github.com/rjanot/YuccaPrerenderBundle) (Symfony 2)
-- [Laravel Prerender](https://github.com/JeroenNoten/Laravel-Prerender) (Laravel)
+- [Laravel Prerender](https://github.com/codebar-ag/laravel-prerender) (Laravel)
 
 ###### Java
 
